@@ -1,9 +1,9 @@
 <?php
 $data = new PDO("mysql:host=127.0.0.1;dbname=data_project_customer", "root", "");
 $id = $_GET['id'];
-$numbers = str_split($id);
-$number1 = $numbers[1];
-$number2 = $numbers[0];
+$before_and_after = explode('_', $id);
+$number1 = $before_and_after[1];
+$number2 = $before_and_after[0];
 $checkQuery = "SELECT COUNT(*) FROM `link` WHERE `number_vocational` = :number1 AND `number_customer` = :number2";
 $checkStatement = $data->prepare($checkQuery);
 $checkStatement->bindParam(':number1', $number1);

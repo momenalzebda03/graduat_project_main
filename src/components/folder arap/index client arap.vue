@@ -295,7 +295,7 @@ export default {
     },
     methods: {
         getImagePath(imageName) {
-            return require(`../../assets/imageheader/${imageName}`);
+            return require(`../../assets/imagedatabase/${imageName}`);
         },
         signIn() {
             const container = document.getElementById("container");

@@ -320,7 +320,7 @@ export default {
             return `http://localhost/graduatproject-main/src/components/folder%20english/insert%20link%20vocational.php?id=${id + this.$route.query.id}`;
         },
         getImagePath(imageName) {
-            return require(`../../assets/imageheader/${imageName}`);
+            return require(`../../assets/imagedatabase/${imageName}`);
         },
         signIn() {
             const container = document.getElementById("container");

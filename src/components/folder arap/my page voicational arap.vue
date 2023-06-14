@@ -223,7 +223,7 @@ export default {
     methods: {
         getImagePath(imageName) {
             if (imageName) {
-                return require(`../../assets/imageheader/${imageName}`);
+                return require(`../../assets/imagedatabase/${imageName}`);
             }
         },
         signIn() {
