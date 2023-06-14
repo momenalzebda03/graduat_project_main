@@ -1,0 +1,1017 @@
+@import "color";
+
+body {
+    text-transform: capitalize;
+}
+
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: $color_blue;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #00ff00;
+}
+
+.image_backgound {
+    background-position: center center;
+    background-size: cover;
+}
+
+.button_hover {
+    transition: 0.3s;
+}
+
+.button_hover:hover {
+    background-color: $color_red;
+    color: $color_white;
+}
+
+.my_top {
+    top: 0;
+}
+
+// start general
+
+.p_style_color {
+    color: $color_text;
+}
+
+.button_color:hover {
+    background-color: $color_red !important;
+}
+
+.my_button {
+    border-radius: 20px;
+    background-color: $color_blue;
+    font-size: 12px;
+    padding: 12px 45px;
+    text-transform: uppercase;
+}
+
+.my_button:active {
+    transform: scale(0.95);
+}
+
+
+.my_button:focus {
+    outline: none;
+}
+
+.my_button.ghost {
+    background-color: transparent;
+    border-color: #FFFFFF;
+}
+
+.overlay {
+    background: -webkit-linear-gradient(-167deg, rgb(66, 133, 244), rgb(60, 65, 104));
+    background: linear-gradient(-167deg, rgb(66, 133, 244), rgb(60, 65, 104));
+    left: -100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+}
+
+.container.right-panel-active .overlay {
+    transform: translateX(50%);
+}
+
+.overlay-panel {
+    padding: 0 40px;
+    top: 0;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+}
+
+.overlay-left {
+    transform: translateX(-20%);
+}
+
+.container.right-panel-active .overlay-left {
+    transform: translateX(0);
+}
+
+.overlay-right {
+    right: 0;
+    transform: translateX(0);
+}
+
+.container.right-panel-active .overlay-right {
+    transform: translateX(20%);
+}
+
+.button_red:hover {
+    background-color: $color_green !important;
+}
+
+.image_z {
+    z-index: -1;
+}
+
+// end general
+
+// start page 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body section .div_body {
+    height: 100vh;
+    background-image: radial-gradient(circle farthest-corner at 10% 20%, rgba(0, 152, 155, 1) 0.1%, rgba(0, 94, 120, 1) 94.2%);
+    font-family: 'Montserrat', sans-serif;
+}
+
+body section .div_body .loading-container {
+    max-width: 400px;
+
+    &:before {
+        content: '';
+        position: absolute;
+        width: 20%;
+        height: 3px;
+        background-color: #fff;
+        bottom: 0;
+        left: 0;
+        border-radius: 10px;
+        animation: movingLine 2.4s infinite ease-in-out;
+    }
+}
+
+@keyframes movingLine {
+    0% {
+        opacity: 0;
+        width: 0;
+    }
+
+    33.3%,
+    66% {
+        opacity: 0.8;
+        width: 100%;
+    }
+
+    85% {
+        width: 0;
+        left: initial;
+        right: 0;
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        width: 0;
+    }
+}
+
+.container .loading-text {
+    font-size: 70px;
+    line-height: 64px;
+    letter-spacing: 10px;
+
+    span {
+        animation: moveLetters 2.4s infinite ease-in-out;
+        transform: translatex(0);
+        text-shadow: 0px 2px 10px rgba(46, 74, 81, 0.3);
+    }
+}
+
+@for $i from 1 through 7 {
+    .loading-text span:nth-child(#{$i}) {
+        animation-delay: $i * 0.1s;
+    }
+}
+
+@keyframes moveLetters {
+    0% {
+        transform: translateX(-15vw);
+        opacity: 0;
+    }
+
+    33.3%,
+    66% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(15vw);
+        opacity: 0;
+    }
+}
+
+// end page
+
+// start header
+body section .div_hit {
+    height: 30px;
+}
+
+body section .div_hit1 {
+    height: 30px !important;
+}
+
+body section .div_hit nav {
+    z-index: 100000;
+}
+
+body section .div_hit nav .container .image_header {
+    width: 50px;
+}
+
+body section .div_hit nav .container .collapse ul li .link_color:hover {
+    color: $color_blue !important;
+}
+
+body section .div_hit nav .container .collapse ul li .active {
+    color: $color_blue !important;
+}
+
+body section .div_hit nav .container .collapse ul li #my_icon {
+    cursor: pointer;
+}
+
+// end header
+// start section my
+.my_color_top {
+    background-color: #eee;
+}
+
+// end section my
+/* Start Projects Table */
+.projects .responsive-table {
+    overflow-x: auto;
+}
+
+.projects table {
+    min-width: 1000px;
+    border-spacing: 0;
+}
+
+.projects thead td {
+    background-color: #eee;
+    font-weight: bold;
+}
+
+.projects table td {
+    padding: 15px;
+}
+
+.projects tbody td {
+    border-bottom: 1px solid #eee;
+    border-left: 1px solid #eee;
+    transition: 0.3s;
+}
+
+.projects table tbody tr td:last-child {
+    border-right: 1px solid #eee;
+}
+
+.projects tbody tr:hover td {
+    color: black;
+    background-color: #faf7f7;
+}
+
+.projects table img {
+    width: 50px;
+    height: 50px;
+    padding: 2px;
+    background-color: white;
+}
+
+.projects table img:not(:first-child) {
+    margin-left: -20px;
+}
+
+/* End Projects Table */
+// start main
+body section div .div_our_hr {
+    border: 2px dashed orangered;
+    height: 50px;
+}
+
+body section .container .row div .card article figure .image_hover {
+    width: 105%;
+    transform: translateX(calc(var(--hover) * -15%)) scale(calc(1 + var(--hover) * 0.2));
+    transition: transform 0.2s;
+}
+
+body section .container .row div .card div div .arrow {
+    width: 2vmin;
+    height: 2vmin;
+    border-top: 1vmin solid $color_black;
+    border-right: 1vmin solid $color_black;
+    transition: all 200ms ease;
+}
+
+body section .container .row div .card div div .arrow.right {
+    right: 0;
+    transform: rotate(45deg);
+}
+
+body section .container .row div .card_black:hover .arrow {
+    border-color: $color_orange;
+    box-shadow: 0.5vmin -0.5vmin 0 $color_black;
+}
+
+body section div .container .row div .div_our_backgounrd {
+    cursor: pointer;
+    background-color: #111111;
+    transition: 0.5s;
+}
+
+body section div .container .row div .div_our_backgounrd:hover {
+    background-color: orangered;
+}
+
+body section .container .row div .div_about {
+    background-color: #707070;
+    height: 4px;
+    width: 75%;
+}
+
+body section .container .row div .div_about .div_hr_about {
+    background: linear-gradient(71deg, rgb(255, 73, 0), rgb(255, 191, 13));
+    height: 4px;
+}
+
+body section .row div div div .button_link {
+    background-color: $color_blue;
+}
+
+body section .row div div div .button_link:hover {
+    background-color: $color_red;
+}
+
+body section .row div div .p_style {
+    background-color: $color_blue;
+}
+
+body section a .icon_arrow {
+    animation: arra_top 1s infinite;
+}
+
+@keyframes arra_top {
+    0% {
+        margin-top: 30px;
+    }
+
+    50% {
+        margin-top: 40px;
+    }
+
+    100% {
+        margin-top: 30px;
+    }
+}
+
+@keyframes display {
+    0% {
+        transform: translateX(200px);
+        opacity: 0;
+    }
+
+    10% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    20% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    30% {
+        transform: translateX(-200px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(-200px);
+        opacity: 0;
+    }
+}
+
+.pic-ctn>img {
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    animation: display 10s infinite;
+}
+
+img:nth-child(2) {
+    animation-delay: 2s;
+}
+
+img:nth-child(3) {
+    animation-delay: 4s;
+}
+
+img:nth-child(4) {
+    animation-delay: 6s;
+}
+
+img:nth-child(5) {
+    animation-delay: 8s;
+}
+
+section .container .row .div_none {
+    height: 480px;
+}
+
+body section .section_backgoundimage {
+    z-index: -1;
+    height: 900px;
+}
+
+body .div_border_left,
+body .div_border_right {
+    border: 3px solid $color_white;
+    width: 70px;
+    height: 70px;
+}
+
+body .div_border_left {
+    border-right: transparent;
+    border-bottom: transparent;
+}
+
+body .div_border_right {
+    border-left: transparent;
+    border-top: transparent;
+}
+
+.container div .image_commit_left,
+.container div .image_commit_right {
+    width: 100px;
+}
+
+.container div .image_commit_left {
+    margin-top: -30px;
+}
+
+.container div .image_commit_right {
+    margin-top: -55px;
+    margin-left: -40px;
+}
+
+body section #container {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+        0 10px 10px rgba(0, 0, 0, 0.22);
+    width: 800px;
+    z-index: 0;
+    min-height: 1150px;
+}
+
+body section .div_con_he {
+    min-height: 650px !important;
+}
+
+body section .container .form-container {
+    width: 50%;
+    top: 0;
+    transition: all 0.6s ease-in-out;
+}
+
+body section .container .form-container .my_form {
+    padding: 0 50px;
+    height: 1150px;
+}
+
+body section .container .form-container .height_up {
+    background-color: $color_white;
+    height: 690px;
+}
+
+body section .container .form-container .height_in {
+    height: 650px;
+}
+
+body section .container .form-container .my_form .my_input {
+    background-color: #eee;
+    padding: 10px 15px;
+}
+
+body section .container .sign-in-container {
+    left: 0;
+    z-index: 2;
+    height: 130vh;
+    width: 50%;
+}
+
+body section .container.right-panel-active .sign-in-container {
+    transform: translateX(100%);
+}
+
+body section .container .sign-up-container {
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+}
+
+.container.right-panel-active .sign-up-container {
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: show 0.6s;
+}
+
+@keyframes show {
+
+    0%,
+    49.99% {
+        opacity: 0;
+        z-index: 1;
+    }
+
+    50%,
+    100% {
+        opacity: 1;
+        z-index: 5;
+    }
+}
+
+body section .container .overlay-container {
+    top: 0;
+    left: 50%;
+    width: 50%;
+    transition: transform 0.6s ease-in-out;
+    z-index: 100;
+}
+
+.container.right-panel-active .overlay-container {
+    transform: translateX(-100%);
+}
+
+.my_button_hover:hover {
+    background-color: $color_orange;
+}
+
+body section .image_margin {
+    transform: translate(0, -60px);
+    height: 90vh;
+}
+
+body section .container .div_backgound_index {
+    top: 50px;
+    z-index: 55555;
+}
+
+body section div div .my_texteara {
+    resize: none;
+}
+
+body section div div div .div_wh_english,
+body section div div div .div_wh_arap {
+    background-color: $color_blue;
+    top: 0;
+    width: 5px;
+}
+
+body section div div div .div_wh_english {
+    height: 1407px;
+}
+
+body section div div div .div_wh_arap {
+    height: 1361px;
+}
+
+body section div div div .div_wh::before {
+    content: "OR";
+    background-color: $color_blue;
+    color: white;
+    padding: 20px;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+body section div div div .div_wh:hover::before {
+    background-color: $color_red;
+}
+
+// end main
+// start sign in
+body section div .div_white {
+    top: 80px;
+    z-index: 3;
+    width: 700px;
+    transition: 0.3s;
+    display: none;
+}
+
+body section div .div_white #icon_close2,
+body section div .div_white #icon_close,
+body section div .div_white #icon_close1 {
+    cursor: pointer;
+}
+
+body section div .div_white div .container .row div details summary {
+    cursor: pointer;
+    background-color: #ddd;
+    list-style: none;
+}
+
+body section div .div_white div .container .row div details summary:after {
+    content: '';
+    display: inline-block;
+    float: right;
+    width: .5rem;
+    height: .5rem;
+    border-bottom: 1px solid currentColor;
+    border-left: 1px solid currentColor;
+    border-bottom-left-radius: 2px;
+    transform: rotate(45deg) translate(100%, 100%);
+    transform-origin: center center;
+    transition: transform ease-in-out 100ms
+}
+
+body section div .div_white div .container .row div details[open] summary:after {
+    transform: rotate(-45deg) translate(0%, 0%);
+}
+
+body section div .div_white div .container .row div details .list {
+    background: #ddd;
+    top: calc(100% + .5rem);
+}
+
+input[type=radio] {
+    counter-increment: radios;
+    appearance: none;
+    display: none;
+}
+
+input[type=radio]:checked {
+    display: inline;
+    --display: block;
+}
+
+input[type=radio]:after {
+    content: attr(title);
+    display: inline;
+    font-size: 1rem;
+}
+
+body section div .div_white div .container .row .my_none {
+    z-index: -1;
+    height: 400px;
+}
+
+body section div .div_white div .container .row .my_none .div_backgound_blue {
+    height: 320px;
+    width: 320px;
+    background-color: $color_blue;
+}
+
+// end sign in
+
+// start imagine
+
+body section .container .row div .div_color {
+    background-color: #eee;
+}
+
+body section .container .row div .div_color:hover .ag-courses-item_title,
+body section .container .row div .div_color:hover .p_color,
+body section .container .row div .div_color:hover .p_color_blue {
+    color: white;
+}
+
+body section .container .row div .translate_icon {
+    z-index: 2;
+    background-color: $color_blue;
+    transform: translate(-30px, -35px);
+}
+
+body section .container .row div .ag-courses_item {
+    margin: 0 0px 30px;
+}
+
+body section .container .row div .ag-courses_item .ag-courses-item_link {
+    background-color: var(--organge);
+    text-decoration: none;
+}
+
+body section .container .row div .ag-courses_item .ag-courses-item_link:hover .ag-courses-item_bg {
+    -webkit-transform: scale(10);
+    -ms-transform: scale(10);
+    transform: scale(10);
+}
+
+.ag-courses-item_title {
+    color: black;
+    margin-top: -30px;
+    z-index: 2;
+}
+
+.ag-courses-item_bg {
+    height: 128px;
+    width: 128px;
+    background-color: #f9b234;
+    z-index: 1;
+    top: -75px;
+    right: -75px;
+    -webkit-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}
+
+body section .container .row div .ag-courses_item .ag-courses-item_link .item_bg_1 {
+    background-color: #3ecd5e;
+}
+
+body section .container .row div .ag-courses_item .ag-courses-item_link .item_bg_2 {
+    background-color: #e44002;
+}
+
+body section .container .row div .ag-courses_item .ag-courses-item_link .item_bg_3 {
+    background-color: #952aff;
+}
+
+body section .container .row div .ag-courses_item .ag-courses-item_link .item_bg_4 {
+    background-color: #cd3e94;
+}
+
+body section .container .row div .ag-courses_item .ag-courses-item_link .item_bg_5 {
+    background-color: #4c49ea;
+}
+
+.p_color {
+    color: rgba(0, 0, 0, 0.632);
+}
+
+.p_color_blue {
+    color: $color_blue;
+}
+
+// end imagine
+// start all
+body section .container .row div .div_border {
+    border-left: 7px solid $color_blue !important;
+    border: 1px solid #ccc;
+}
+
+body section .container .row div div div .with_image {
+    width: 55px;
+}
+
+// end all
+// start about us
+body .section_color {
+    background-color: #eee;
+}
+
+body .section_color .container .row div div .icon_color {
+    color: $color_green;
+}
+
+// end about us
+// start work
+body section .row div .div_image {
+    height: 206% !important;
+}
+
+@mixin transition-mix($property: all, $duration: 0.2s, $timing: linear, $delay: 0s) {
+    transition-property: $property;
+    transition-duration: $duration;
+    transition-timing-function: $timing;
+    transition-delay: $delay;
+}
+
+@mixin position-absolute ($top: null, $left: null, $right: null, $bottom: null) {
+    position: absolute;
+    top: $top;
+    left: $left;
+    right: $right;
+    bottom: $bottom;
+}
+
+@mixin img-position($max-width: 200%, $max-height: 200%) {
+    position: relative;
+    overflow: hidden;
+
+    img {
+        @include position-absolute($top: 50%, $left: 50%);
+        width: auto;
+        height: auto;
+        min-width: 100%;
+        min-height: 100%;
+        max-width: $max-width;
+        max-height: $max-height;
+        transform: translate(-50%, -50%);
+    }
+}
+
+body section .container .row div .portfolio-item {
+    @include img-position();
+    width: $portfolio-item-width;
+    height: $portfolio-item-height;
+}
+
+body section .container .row div .portfolio-item .portfolio-item__info {
+    @include position-absolute($top: $portfolio-item-info-offset, $left: $portfolio-item-info-offset);
+    width: calc(100% - 2 * #{$portfolio-item-info-offset});
+    height: calc(100% - 2 * #{$portfolio-item-info-offset});
+    background-color: rgba(255, 255, 255, .7);
+}
+
+body section .container .row div .portfolio-item .portfolio-item__info .portfolio-item__header {
+    margin: 0 0 20px 0;
+    padding: 15px 0;
+
+    &:after {
+        @include position-absolute($bottom: 0, $left: 0);
+        display: block;
+        height: 2px;
+        width: 100%;
+        content: '';
+        background-color: $accent-theme-color2;
+    }
+}
+
+.portfolio-item--eff1 {
+
+    .portfolio-item__info {
+        transform: scale(1.1);
+        opacity: 0;
+    }
+
+    .portfolio-item__header {
+        top: -10px;
+        opacity: 0;
+
+        &:after {
+            transform: scaleX(0);
+        }
+    }
+}
+
+.portfolio-item--eff1:hover {
+
+    .portfolio-item__info {
+        @include transition-mix($duration: .4s);
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    .portfolio-item__header {
+        @include transition-mix($delay: .45s);
+        top: 0;
+        opacity: 1;
+
+        &:after {
+            @include transition-mix($duration: .3s, $timing: cubic-bezier(0.63, 0.01, 0, 1.39), $delay: .65s);
+            transform: scaleX(1);
+        }
+    }
+}
+
+// end work
+// start blog
+body section .container .row .more_hover:hover {
+    color: $color_red;
+}
+
+// end blog
+// start contact
+body .section_height {
+    height: 948px;
+}
+
+body section .div_postive {
+    width: 100%;
+    height: 900px;
+    background: -webkit-linear-gradient(61deg, rgba(114, 164, 239, 0.375), rgba(113, 221, 238, 0.71));
+    background: linear-gradient(61deg, rgba(114, 164, 239, 0.375), rgba(113, 221, 238, 0.71));
+}
+
+body section .div_postive .container .div_margin {
+    margin-left: 300px;
+    margin-right: 300px;
+}
+
+// end contact
+// start have
+body section .div_200_height,
+body section .my_image {
+    height: 50vh;
+}
+
+// end have
+// start footer
+.image_footer {
+    width: 50px;
+}
+
+.div_hr {
+    height: 1px;
+    width: 100%;
+}
+
+// end footer
+// start media
+@media (max-width: 990px) and (min-width: 0px) {
+    body section .div_body .loading-container {
+        max-width: 50%;
+    }
+
+    section .div_hit nav .container .collapse ul .div_media {
+        background-color: orange;
+    }
+
+    .my_none,
+    section .container .row .div_none {
+        display: none;
+    }
+
+    body .section_margin {
+        margin-top: 10px;
+    }
+
+    body section div div .my_texteara,
+    body section .container .sign-in-container,
+    body section .container .sign-up-container,
+    body section .container .row div .div_about,
+    body section .container .row div .image_with {
+        width: 100% !important;
+    }
+
+    body section .row div .div_image {
+        height: 305px !important;
+    }
+
+    body section .div_postive .container .div_margin {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+
+    body section div .div_white {
+        width: 90%;
+    }
+
+    body section .container .form-container .my_form {
+        height: 0vh;
+    }
+
+    body section .container .overlay-container {
+        display: none;
+    }
+
+    body section .container .sign-in-container {
+        margin-top: 150px;
+        color: rgb(58, 143, 44);
+    }
+
+    body section .container .sign-up-container {
+        opacity: 1;
+        margin-top: 790px;
+        z-index: 999999;
+        color: rgb(58, 143, 44);
+    }
+
+    body section .container .height_container {
+        margin-top: -550px;
+    }
+
+    body section .container .form-container .height_up {
+        background-color: transparent;
+        height: 600px;
+    }
+
+    body section #container {
+        width: 100%;
+        min-height: 1300px;
+    }
+
+    body section .div_con_he {
+        min-height: 850px !important;
+    }
+
+    body div section div div form .input_file {
+        padding-top: 15px !important;
+        padding-bottom: 40px !important;
+    }
+
+    body section .container.right-panel-active .sign-in-container {
+        transform: translateX(0%);
+    }
+
+    .container.right-panel-active .sign-up-container {
+        transform: translateX(0%);
+    }
+
+    body section .image_margin {
+        height: 40vh;
+    }
+
+    body section div div div .div_wh {
+        left: 0;
+        top: 560px;
+        width: 100%;
+        height: 5px;
+    }
+}
+
+// end media
