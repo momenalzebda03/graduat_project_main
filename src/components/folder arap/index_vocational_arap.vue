@@ -110,44 +110,19 @@
                                 <td>الزر</td>
                             </tr>
                         </thead>
-                        <tbody :style="{ color: textColor }">
+                        <tbody v-for="my_api in api_user2" :key="my_api.Customer_Name" :style="{ color: textColor }">
                             <tr>
-                                <td>محمد احمد</td>
-                                <td>دكتور</td>
+                                <td>{{ my_api.Customer_Name }}</td>
+                                <td>{{ my_api.Customer_Required_profession }}</td>
                                 <td>
-                                    <img src="../../assets/imageheader/professional-headshots-nyc-043.png" alt="">
+                                    <img :src="getImagePath(my_api.Customer_Image)" alt="" class="rounded-circle">
                                 </td>
                                 <td>
                                     <button type="button" @click="showDivWhite1" :style="{ backgroundColor: buttonColor }"
-                                        class="button_color text-white border-0 btn rounded-5 px-5 bg-success mt-3">ربط</button>
+                                        class="button_color text-white border-0 btn rounded-5 px-5 bg-success mt-3">link</button>
                                     <button type="button" @click="showDivWhite2" :style="{ backgroundColor: buttonColor }"
-                                        class="text-white border-0 btn rounded-5 ms-2 px-4 bg-danger button_red mt-3">رفض</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>محمد احمد</td>
-                                <td>دكتور</td>
-                                <td>
-                                    <img src="../../assets/imageheader/professional-headshots-nyc-043.png" alt="">
-                                </td>
-                                <td>
-                                    <button type="button" @click="showDivWhite1" :style="{ backgroundColor: buttonColor }"
-                                        class="button_color text-white border-0 btn rounded-5 px-5 bg-success mt-3">ربط</button>
-                                    <button type="button" @click="showDivWhite2" :style="{ backgroundColor: buttonColor }"
-                                        class="text-white border-0 btn rounded-5 ms-2 px-4 bg-danger button_red mt-3">رفض</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>محمد احمد</td>
-                                <td>دكتور</td>
-                                <td>
-                                    <img src="../../assets/imageheader/professional-headshots-nyc-043.png" alt="">
-                                </td>
-                                <td>
-                                    <button type="button" @click="showDivWhite1" :style="{ backgroundColor: buttonColor }"
-                                        class="button_color text-white border-0 btn rounded-5 px-5 bg-success mt-3">ربط</button>
-                                    <button type="button" @click="showDivWhite2" :style="{ backgroundColor: buttonColor }"
-                                        class="text-white border-0 btn rounded-5 ms-2 px-4 bg-danger button_red mt-3">رفض</button>
+                                        class="text-white border-0 btn rounded-5 ms-2 px-4 bg-danger button_red mt-3">To
+                                        Reject</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -297,6 +272,7 @@ export default {
         return {
             api_user: {},
             api_user1: {},
+            api_user2: {},
             divWhiteDisplay: 'none',
             divWhiteDisplay1: 'none',
             divWhiteDisplay2: 'none',
@@ -313,6 +289,11 @@ export default {
             .get(`http://localhost/graduatproject-main/src/components/folder%20english/select%20page%20client%20english.php`)
             .then((response) => {
                 this.api_user1 = response.data;
+            })
+        axios
+            .get(`http://localhost/graduatproject-main/src/components/folder%20english/page%20select%20client%20link%20join.php?id=${id}`)
+            .then((response) => {
+                this.api_user2 = response.data;
             })
     },
     methods: {

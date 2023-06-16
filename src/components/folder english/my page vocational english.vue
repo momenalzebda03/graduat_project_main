@@ -9,21 +9,24 @@
                             :style="{ backgroundColor: buttonColor }">hello, i am</p>
                         <h1 class="fw-bold mt-4 text_black">{{ api_user.Name_Vocational }}</h1>
                         <p class="mt-2 text-secondary">{{ api_user.Vocational_Job_Description }}</p>
-                        <div class="d-flex justify-content-center justify-content-lg-start mt-4">
-                            <button type="button" @:click="showDivWhite" :style="{ backgroundColor: buttonColor }"
-                                class="button_color text-white border-0 btn rounded-5 px-5">link</button>
+                        <div v-for="api in  api_user1 " :key="api.Customer_Id"
+                            class="d-flex justify-content-center justify-content-lg-start mt-4">
+                            <a :href="getLink(api.Customer_Id)">
+                                <button type="button" :style="{ backgroundColor: buttonColor }"
+                                    class="button_color text-white border-0 btn rounded-5 px-5">link</button>
+                            </a>
                         </div>
                     </div>
                 </div>
                 <div data-aos="fade-left" class="col-12 col-lg-6 d-flex justify-content-center mt-3 mt-lg-0">
-                    <img :src="getImagePath(api_user.Vocational_Image)" alt="" class="w-100 rounded-4">
+                    <img :src="getImagePath(api_user.Vocational_Image)" alt="" class="image_100 rounded-4">
                 </div>
             </div>
             <a href="#link_bottom" class="d-flex justify-content-center text-decoration-none mt-5">
                 <i class="fas fa-arrow-down fs-3 p-3 icon_arrow position-absolute"></i>
             </a>
         </section>
-        <section>
+        <!-- <section>
             <div class="d-flex justify-content-center">
                 <div class="div_white shadow-lg p-3 mb-5 bg-body position-fixed" :style="{ display: divWhiteDisplay }">
                     <div class="text-end pe-3">
@@ -37,7 +40,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
         <!-- end completed 1 -->
         <!-- start read -->
         <section class="mt-5 pt-0 mt-lg-5 pt-lg-5" :style="{ color: textColor }" id="link_bottom">
@@ -208,6 +211,7 @@ export default {
     data() {
         return {
             api_user: {},
+            api_user1: {},
             divWhiteDisplay: 'none',
         };
     },
@@ -217,9 +221,17 @@ export default {
             .get(`http://localhost/graduatproject-main/src/components/folder%20english/select%20page%20voicational%20english.php?id=${id}`)
             .then((response) => {
                 this.api_user = response.data;
-            })
+            });
+        axios
+            .get(`http://localhost/graduatproject-main/src/components/folder%20english/select%20page%20client%20english.php`)
+            .then((response) => {
+                this.api_user1 = response.data;
+            });
     },
     methods: {
+        getLink(id) {
+            return `http://localhost/graduatproject-main/src/components/folder%20english/insert%20link%20vocational.php?id=${id}_${this.$route.params.id}`;
+        },
         getImagePath(imageName) {
             if (imageName) {
                 return require(`../../assets/imagedatabase/${imageName}`);
@@ -232,12 +244,6 @@ export default {
         signUp() {
             const container = document.getElementById("container");
             container.classList.add("right-panel-active");
-        },
-        showDivWhite() {
-            this.divWhiteDisplay = 'block';
-        },
-        hideDivWhite() {
-            this.divWhiteDisplay = 'none';
         },
         changePageTitle(newTitle) {
             document.title = newTitle;

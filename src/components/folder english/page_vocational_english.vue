@@ -36,7 +36,7 @@
                             name="Password_vocational" v-model="password" />
                         <input type="password" placeholder="Confirm Password" required
                             class="my_input border border-0 w-100 my-2" v-model="confirmPassword" />
-                        <input type="file" name="Image_vocational" required
+                        <input type="file" name="Image_vocational" required @change="handleImageUpload"
                             class="my_input border border-0 w-100 my-2 input_file">
                         <button :disabled="isFormDisabled" class="my_button border border-0 button_color text-white fw-bold"
                             type="submit">Sign up
@@ -94,11 +94,12 @@ export default {
         this.changePageTitle('VOCATIONAL');
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('invalidCredentials') === 'true') {
-            this.invalidCredentials = true;          
+            this.invalidCredentials = true;
         }
     },
     data() {
         return {
+            selectedImage: null,
             invalidCredentials: false,
             password: '',
             confirmPassword: ''
@@ -113,7 +114,12 @@ export default {
         },
     },
     methods: {
+        handleImageUpload(event) {
+            this.selectedImage = event.target.files[0];
+        },
         click_vild() {
+            const formData = new FormData();
+            formData.append("image", this.selectedImage);
             axios.post("http://localhost/graduatproject/src/components/folder%20english/Check%20registration%20vocational%20english.php")
                 .then(() => {
                     //

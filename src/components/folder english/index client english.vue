@@ -289,6 +289,7 @@ export default {
             .get(`http://localhost/graduatproject-main/src/components/folder%20english/page%20select%20links%20join.php?id=${id}`)
             .then((response) => {
                 this.api_user2 = response.data;
+                console.log(this.api_user2 = response.data);
             })
     },
     methods: {
