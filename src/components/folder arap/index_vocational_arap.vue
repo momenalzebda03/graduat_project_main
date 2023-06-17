@@ -118,11 +118,11 @@
                                 </td>
                                 <td>
                                     <button type="button" @click="showDivWhite1" :style="{ backgroundColor: buttonColor }"
-                                        class="button_color text-white border-0 btn rounded-5 px-5 bg-success mt-3">link</button>
+                                        class="button_color text-white border-0 btn rounded-5 px-5 bg-success mt-3">الربط</button>
                                     <a :href="my_delete(my_api.Customer_Id)">
                                         <button type="button" :style="{ backgroundColor: buttonColor }"
                                             class="text-white border-0 btn rounded-5 ms-2 px-4 bg-danger button_red mt-3">
-                                            To Reject
+                                            الحذف
                                         </button>
                                     </a>
                                 </td>
@@ -218,16 +218,16 @@
         </section>
         <!-- end main -->
         <!-- start completed 1 -->
-        <section>
+        <section :style="{ display: true_delete }">
             <div class="d-flex justify-content-center">
-                <div class="div_white shadow-lg p-3 mb-5 bg-body position-fixed" :style="{ display: divWhiteDisplay1 }">
+                <div class="div_white shadow-lg p-3 mb-5 bg-body position-fixed">
                     <div class="text-end pe-3">
-                        <div id="icon_close1" @click="hideDivWhite1">
+                        <div id="icon_close1" @click="button_delete">
                             <i class="fas fa-times fs-2"></i>
                         </div>
                         <div class="text-center container">
-                            <h4 class="text-success">تم إكمال الارتباط بنجاح</h4>
-                            <img src="../../assets/verificationimage/imagetrue.png" class="py-5 w-75" alt="">
+                            <h4 class="text-danger">حذف بنجاح</h4>
+                            <img src="../../assets/verificationimage/imageerror.png" class="py-5 w-75" alt="">
                         </div>
                     </div>
                 </div>
@@ -275,7 +275,7 @@ export default {
             api_user: {},
             api_user1: {},
             api_user2: {},
-            divWhiteDisplay: 'none',
+            true_delete: 'none',
             divWhiteDisplay1: 'none',
         };
     },
@@ -283,6 +283,9 @@ export default {
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('invalidCredentials') === 'true') {
             this.divWhiteDisplay1 = 'block';
+        }
+        if (urlParams.get('true_delete') === 'true') {
+            this.true_delete = 'block';
         }
         const id = this.$route.query.id;
         axios
@@ -306,7 +309,7 @@ export default {
             return `http://localhost/graduatproject-main/src/components/folder%20arap/insert%20link%20vocational%20arap.php?id=${id}_${this.$route.query.id}`;
         },
         my_delete(id) {
-            return `http://localhost/graduatproject-main/src/components/folder%20english/delete%20client.php?id=${id}_${this.$route.query.id}`;
+            return `http://localhost/graduatproject-main/src/components/folder%20arap/delete%20voicational%20arap.php?id=${id}_${this.$route.query.id}`;
         },
         getImagePath(imageName) {
             return require(`../../assets/imagedatabase/${imageName}`);
@@ -321,6 +324,9 @@ export default {
         },
         hideDivWhite1() {
             this.divWhiteDisplay1 = 'none';
+        },
+        button_delete() {
+            this.true_delete = 'none';
         },
         changePageTitle(newTitle) {
             document.title = newTitle;

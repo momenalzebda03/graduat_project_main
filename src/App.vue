@@ -33,9 +33,11 @@
                   language
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><router-link :to="{ path: '/my_page_voictional_arap/' + $route.params.id }"
-                      class="dropdown-item">arab</router-link></li>
-                  <li><router-link :to="{ path: '/my_page_voictional_english/' + $route.params.id }"
+                  <li><router-link :to="{
+                    path: '/my_page_voictional_arap/' + $route.params.id, query: { id: $route.query.id }
+                  }" class="dropdown-item">arab</router-link></li>
+                  <li><router-link
+                      :to="{ path: '/my_page_voictional_english/' + $route.params.id, query: { id: $route.query.id } }"
                       class="dropdown-item">english</router-link></li>
                 </ul>
               </li>
@@ -229,9 +231,9 @@
                   :class="{ 'active1': $route.path === '/home_english' }">home</router-link>
               </li>
               <li class="nav-item mt-1">
-                <router-link to="/page_counseling_voiactional_english" class="text-decoration-none link_color text_black"
-                  :style="{ color: textColor }" aria-current="page"
-                  :class="{ 'active1': $route.path === '/page_counseling_voiactional_english' }">Counseling</router-link>
+                <router-link :to="{ path: '/page_counseling_voiactional_english/' + $route.query.id }"
+                  class="text-decoration-none link_color text_black" :style="{ color: textColor }"
+                  aria-current="page">Counseling</router-link>
               </li>
               <li class=" nav-item mt-1">
                 <router-link to="/page_vocational_english" class="text-decoration-none link_color text_black"
@@ -392,10 +394,9 @@
                   :class="{ 'active1': $route.path === '/home_english' }">home</router-link>
               </li>
               <li class="nav-item mt-1">
-                <router-link to="/page_counseling_voiactional_english"
-                  class="text-decoration-none link_color text_black active" :style="{ color: textColor }"
-                  aria-current="page"
-                  :class="{ 'active1': $route.path === '/page_counseling_voiactional_english' }">Counseling</router-link>
+                <router-link :to="{ path: '/page_counseling_voiactional_english/' + $route.params.id }"
+                  class="text-decoration-none link_color text_black" :style="{ color: textColor }"
+                  aria-current="page">Counseling</router-link>
               </li>
               <li class=" nav-item mt-1">
                 <router-link to="/page_vocational_english" class="text-decoration-none link_color text_black"
@@ -408,11 +409,9 @@
                   language
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><router-link to="/page_counseling_voiactional_arap"
-                      :class="{ 'active1': $route.path === '/page_counseling_voiactional_arap' }"
+                  <li><router-link :to="{ path: '/page_counseling_voiactional_arap/' + $route.params.id }"
                       class="dropdown-item">arab</router-link></li>
-                  <li><router-link to="/page_counseling_voiactional_english"
-                      :class="{ 'active1': $route.path === '/page_counseling_voiactional_english' }"
+                  <li><router-link :to="{ path: '/page_counseling_voiactional_english/' + $route.params.id }"
                       class="dropdown-item">english</router-link></li>
                 </ul>
               </li>
@@ -448,9 +447,9 @@
                   :class="{ 'active1': $route.path === '/home_arap' }">الرئيسية</router-link>
               </li>
               <li class="nav-item mt-1">
-                <router-link to="/page_counseling_client_arap" class="text-decoration-none link_color text_black active"
-                  :style="{ color: textColor }" aria-current="page"
-                  :class="{ 'active1': $route.path === '/page_counseling_client_arap' }">الاستشارة</router-link>
+                <router-link :to="{ path: '/page_counseling_voiactional_arap/' + $route.params.id }"
+                  class="text-decoration-none link_color text_black active" :style="{ color: textColor }"
+                  aria-current="page">الاستشارة</router-link>
               </li>
               <li class=" nav-item mt-1">
                 <router-link to="/page_Client_arap" class="text-decoration-none link_color text_black"
@@ -504,10 +503,9 @@
                   :class="{ 'active1': $route.path === '/home_arap' }">الرئيسية</router-link>
               </li>
               <li class="nav-item mt-1">
-                <router-link to="/page_counseling_voiactional_arap"
+                <router-link :to="{ path: '/page_counseling_voiactional_arap/' + $route.params.id }"
                   class="text-decoration-none link_color text_black active" :style="{ color: textColor }"
-                  aria-current="page"
-                  :class="{ 'active1': $route.path === '/page_counseling_voiactional_arap' }">الاستشارة</router-link>
+                  aria-current="page">الاستشارة</router-link>
               </li>
               <li class=" nav-item mt-1">
                 <router-link to="/page_vocational_arap" class="text-decoration-none link_color text_black"
@@ -521,12 +519,10 @@
                   اللغة
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><router-link to="/page_counseling_voiactional_arap"
-                      :class="{ 'active1': $route.path === '/page_counseling_voiactional_arap' }"
-                      class="dropdown-item">عربي</router-link></li>
-                  <li><router-link to="/page_counseling_voiactional_english"
-                      :class="{ 'active1': $route.path === '/page_counseling_voiactional_english' }"
-                      class="dropdown-item">انجليزي</router-link></li>
+                  <li><router-link :to="{ path: '/page_counseling_voiactional_arap/' + $route.params.id }"
+                      class="dropdown-item">العربية</router-link></li>
+                  <li><router-link :to="{ path: '/page_counseling_voiactional_english/' + $route.params.id }"
+                      class="dropdown-item">الانجليزية</router-link></li>
                 </ul>
               </li>
               <li class="nav-item mt-1">
@@ -633,9 +629,11 @@
                   اللغة
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><router-link :to="{ path: '/my_page_voictional_arap/' + $route.params.id }"
+                  <li><router-link
+                      :to="{ path: '/my_page_voictional_arap/' + $route.params.id, query: { id: $route.query.id } }"
                       class="dropdown-item">عربي</router-link></li>
-                  <li><router-link :to="{ path: '/my_page_voictional_english/' + $route.params.id }"
+                  <li><router-link
+                      :to="{ path: '/my_page_voictional_english/' + $route.params.id, query: { id: $route.query.id } }"
                       class="dropdown-item">انجليزي</router-link></li>
                 </ul>
               </li>
@@ -873,9 +871,9 @@
                   :class="{ 'active1': $route.path === '/home_arap' }">الرئيسية</router-link>
               </li>
               <li class="nav-item mt-1">
-                <router-link to="/page_counseling_voiactional_arap" class="text-decoration-none link_color text_black"
-                  :style="{ color: textColor }" aria-current="page" href="#scrollspyHeading1"
-                  :class="{ 'active1': $route.path === '/page_counseling_voiactional_arap' }">الاستشارة</router-link>
+                <router-link :to="{ path: '/page_counseling_voiactional_arap/' + $route.query.id }"
+                  class="text-decoration-none link_color text_black" :style="{ color: textColor }"
+                  aria-current="page">الاستشارة</router-link>
               </li>
               <li class=" nav-item mt-1">
                 <router-link to="/page_vocational_arap" class="text-decoration-none link_color text_black"
@@ -1074,11 +1072,11 @@ export default {
       return footer2URLs.includes(this.$route.path) || readMorePattern.test(this.$route.path);
     },
     page_counseling_voicational_english() {
-      const footer2URLs = ['/page_counseling_voiactional_english'];
+      const footer2URLs = [`/page_counseling_voiactional_english/${this.$route.params.id}`];
       return footer2URLs.includes(this.$route.path);
     },
     page_counseling_voicational_arap() {
-      const footer2URLs = ['/page_counseling_voiactional_arap'];
+      const footer2URLs = [`/page_counseling_voiactional_arap/${this.$route.params.id}`];
       return footer2URLs.includes(this.$route.path);
     },
     page_counseling_client_english() {

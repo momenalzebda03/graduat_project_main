@@ -3,7 +3,7 @@
         <div data-bs-spy="scroll" data-bs-target="#navbar-example-arap" data-bs-offset="0" class="scrollspy-example"
             tabindex="0">
             <!-- start main -->
-            <section class="mt-2 p-0 pb-5 mt-lg-5 pt-lg-5 overflow-hidden" id="scrollspyHeading1">
+            <section class="mt-2 p-0 mt-5 pt-lg-5" id="scrollspyHeading1">
                 <div class="container">
                     <div class="row">
                         <div class="col-12 col-lg-6 mt-3 mt-lg-0 div_none" data-aos="fade-right">

@@ -75,14 +75,14 @@ const routes = [
       import("../components/folder arap/my page voicational arap.vue"),
   },
   {
-    path: "/page_counseling_voiactional_english",
+    path: "/page_counseling_voiactional_english/:id",
     component: () =>
       import(
         "../components/folder english/page Counseling vocational english.vue"
       ),
   },
   {
-    path: "/page_counseling_voiactional_arap",
+    path: "/page_counseling_voiactional_arap/:id",
     component: () =>
       import("../components/folder arap/page Counseling vocational arap.vue"),
   },

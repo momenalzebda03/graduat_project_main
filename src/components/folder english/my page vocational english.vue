@@ -9,13 +9,12 @@
                             :style="{ backgroundColor: buttonColor }">hello, i am</p>
                         <h1 class="fw-bold mt-4 text_black">{{ api_user.Name_Vocational }}</h1>
                         <p class="mt-2 text-secondary">{{ api_user.Vocational_Job_Description }}</p>
-                        <div v-for="my_api in api_user2" :key="my_api.Customer_Name"
-                            class="d-flex justify-content-center justify-content-lg-start mt-4">
-                            <a :href="getLink(my_api.Customer_Id)">
-                                <button type="button" :style="{ backgroundColor: buttonColor }"
-                                    class="button_color text-white border-0 btn rounded-5 px-5">link</button>
-                            </a>
-                        </div>
+                        <a :href="getLink(id_client)">
+                            <button type="button" :style="{ backgroundColor: buttonColor }"
+                                class="button_color text-white border-0 btn rounded-5 px-5">
+                                link
+                            </button>
+                        </a>
                     </div>
                 </div>
                 <div data-aos="fade-left" class="col-12 col-lg-6 d-flex justify-content-center mt-3 mt-lg-0">
@@ -26,22 +25,23 @@
                 <i class="fas fa-arrow-down fs-3 p-3 icon_arrow position-absolute"></i>
             </a>
         </section>
-        <!-- <section>
+        <!-- start completed 2 -->
+        <section :style="{ display: divWhiteDisplay1 }">
             <div class="d-flex justify-content-center">
-                <div class="div_white shadow-lg p-3 mb-5 bg-body position-fixed" :style="{ display: divWhiteDisplay }">
+                <div class="div_white shadow-lg p-3 mb-5 bg-body position-fixed">
                     <div class="text-end pe-3">
-                        <div id="icon_close1" @click="hideDivWhite">
-                            <i class="fas fa-times fs-2"></i>
+                        <div id="icon_close1">
+                            <i class="fas fa-times fs-2" @click="hideDivWhite1"></i>
                         </div>
                         <div class="text-center container">
-                            <h4 class="text-success">Request Sent</h4>
+                            <h4 class="text-success">Link completed successfully</h4>
                             <img src="../../assets/verificationimage/imagetrue.png" class="py-5 w-75" alt="">
                         </div>
                     </div>
                 </div>
             </div>
-        </section> -->
-        <!-- end completed 1 -->
+        </section>
+        <!-- end completed 2 -->
         <!-- start read -->
         <section class="mt-5 pt-0 mt-lg-5 pt-lg-5" :style="{ color: textColor }" id="link_bottom">
             <div class="container overflow-hidden">
@@ -210,33 +210,27 @@ export default {
     },
     data() {
         return {
+            divWhiteDisplay1: 'none',
             api_user: {},
-            api_user1: {},
-            api_user2: {},
             divWhiteDisplay: 'none',
         };
     },
     mounted() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('mytrue') === 'true') {
+            this.divWhiteDisplay1 = 'block';
+        }
         const id = this.$route.params.id;
+        this.id_client = this.$route.query.id;
         axios
             .get(`http://localhost/graduatproject-main/src/components/folder%20english/select%20page%20voicational%20english.php?id=${id}`)
             .then((response) => {
                 this.api_user = response.data;
             });
-        axios
-            .get(`http://localhost/graduatproject-main/src/components/folder%20english/select%20page%20client%20english.php`)
-            .then((response) => {
-                this.api_user1 = response.data;
-            });
-        axios
-            .get(`http://localhost/graduatproject-main/src/components/folder%20english/select%20page%20client%20english%20id.php?id=${id}`)
-            .then((response) => {
-                this.api_user2 = response.data;
-            })
     },
     methods: {
-        getLink(id) {
-            return `http://localhost/graduatproject-main/src/components/folder%20english/my%20insert%20link%20vocational.php?id=${id}_${this.$route.query.id}`;
+        getLink(my_id) {
+            return `http://localhost/graduatproject-main/src/components/folder%20english/insert%20client%20vec.php?id=${my_id}_${this.$route.params.id}`;
         },
         getImagePath(imageName) {
             if (imageName) {
@@ -250,6 +244,9 @@ export default {
         signUp() {
             const container = document.getElementById("container");
             container.classList.add("right-panel-active");
+        },
+        hideDivWhite1() {
+            this.divWhiteDisplay1 = 'none';
         },
         changePageTitle(newTitle) {
             document.title = newTitle;

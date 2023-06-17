@@ -18,7 +18,7 @@ if ($existingCount > 0) {
     $deleteStatement->bindParam(':number2', $number2);
 
     if ($deleteStatement->execute()) {
-        $url_english = "http://localhost:8080/index_client_english?id=$number2&true_delete=true";
+        $url_english = "http://localhost:8080/index_vocational_arap?id=$number1&true_delete=true";
         header("Location: " . $url_english);
     } else {
         echo "Oops, an error occurred while deleting.";

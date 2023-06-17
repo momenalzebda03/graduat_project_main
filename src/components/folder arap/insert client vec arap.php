@@ -12,15 +12,17 @@ $checkStatement->execute();
 $existingCount = $checkStatement->fetchColumn();
 
 if ($existingCount > 0) {
-    $deleteQuery = "DELETE FROM `link` WHERE `number_vocational` = :number1 AND `number_customer` = :number2";
-    $deleteStatement = $data->prepare($deleteQuery);
-    $deleteStatement->bindParam(':number1', $number1);
-    $deleteStatement->bindParam(':number2', $number2);
+    echo "The combination of number_vocational and number_customer already exists. Insertion is disabled.";
+} else {
+    $insertQuery = "INSERT INTO `link`(`my_check`, `number_vocational`, `number_customer`) VALUES ('false', :number1, :number2)";
+    $insertStatement = $data->prepare($insertQuery);
+    $insertStatement->bindParam(':number1', $number1);
+    $insertStatement->bindParam(':number2', $number2);
 
-    if ($deleteStatement->execute()) {
-        $url_english = "http://localhost:8080/index_client_english?id=$number2&true_delete=true";
+    if ($insertStatement->execute()) {
+        $url_english = "http://localhost:8080/my_page_voictional_arap/$number1?id=$number2&mytrue=true";
         header("Location: " . $url_english);
     } else {
-        echo "Oops, an error occurred while deleting.";
+        echo "Oops, an error occurred";
     }
 }

@@ -1,5 +1,9 @@
 @import "color";
 
+.image_header {
+    width: 50px;
+}
+
 body {
     text-transform: capitalize;
 }
@@ -216,10 +220,6 @@ body section .div_hit1 {
 
 body section .div_hit nav {
     z-index: 100000;
-}
-
-body section .div_hit nav .container .image_header {
-    width: 50px;
 }
 
 body section .div_hit nav .container .collapse ul li .link_color:hover {
@@ -562,34 +562,6 @@ body section .container .div_backgound_index {
 
 body section div div .my_texteara {
     resize: none;
-}
-
-body section div div div .div_wh_english,
-body section div div div .div_wh_arap {
-    background-color: $color_blue;
-    top: 0;
-    width: 5px;
-}
-
-body section div div div .div_wh_english {
-    height: 1407px;
-}
-
-body section div div div .div_wh_arap {
-    height: 1361px;
-}
-
-body section div div div .div_wh::before {
-    content: "OR";
-    background-color: $color_blue;
-    color: white;
-    padding: 20px;
-    border-radius: 50%;
-    transition: 0.3s;
-}
-
-body section div div div .div_wh:hover::before {
-    background-color: $color_red;
 }
 
 // end main
@@ -1004,13 +976,6 @@ body section .my_image {
 
     body section .image_margin {
         height: 40vh;
-    }
-
-    body section div div div .div_wh {
-        left: 0;
-        top: 560px;
-        width: 100%;
-        height: 5px;
     }
 }
 

@@ -143,56 +143,17 @@
                                 <td>Status</td>
                             </tr>
                         </thead>
-                        <tbody :style="{ color: textColor }">
+                        <tbody v-for="my_api in api_user2" :key="my_api.Customer_Name" :style="{ color: textColor }">
                             <tr>
-                                <td>Ministry Wikipedia</td>
-                                <td>doctor</td>
+                                <td>{{ my_api.Customer_Name }}</td>
+                                <td>{{ my_api.Customer_Required_profession }}</td>
                                 <td>
-                                    <img src="../../assets/imageheader/professional-headshots-nyc-043.png" alt="">
+                                    <img :src="getImagePath(my_api.Customer_Image)" alt="" class="rounded-circle">
                                 </td>
                                 <td>
-                                    <router-link to="/page_counseling_voiactional_english" :style="{ color: textColor }"
-                                        aria-current="page"
-                                        :class="{ 'active1': $route.path === '/page_counseling_voiactional_english' }">
-                                        <button type="button" :style="{ backgroundColor: buttonColor }"
-                                            @click="changeButtonColor"
-                                            class="button_color text-white border-0 btn rounded-5 px-4 mt-3">Advice Or
-                                            Work</button>
-                                    </router-link>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Ministry Wikipedia</td>
-                                <td>doctor</td>
-                                <td>
-                                    <img src="../../assets/imageheader/professional-headshots-nyc-043.png" alt="">
-                                </td>
-                                <td>
-                                    <router-link to="/page_counseling_voiactional_english" :style="{ color: textColor }"
-                                        aria-current="page"
-                                        :class="{ 'active1': $route.path === '/page_counseling_voiactional_english' }">
-                                        <button type="button" :style="{ backgroundColor: buttonColor }"
-                                            @click="changeButtonColor"
-                                            class="button_color text-white border-0 btn rounded-5 px-4 mt-3">Advice Or
-                                            Work</button>
-                                    </router-link>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Ministry Wikipedia</td>
-                                <td>doctor</td>
-                                <td>
-                                    <img src="../../assets/imageheader/professional-headshots-nyc-043.png" alt="">
-                                </td>
-                                <td>
-                                    <router-link to="/page_counseling_voiactional_english" :style="{ color: textColor }"
-                                        aria-current="page"
-                                        :class="{ 'active1': $route.path === '/page_counseling_voiactional_english' }">
-                                        <button type="button" :style="{ backgroundColor: buttonColor }"
-                                            @click="changeButtonColor"
-                                            class="button_color text-white border-0 btn rounded-5 px-4 mt-3">Advice Or
-                                            Work</button>
-                                    </router-link>
+                                    <button type="button" @click="showDivWhite1" :style="{ backgroundColor: buttonColor }"
+                                        class="button_color text-white border-0 btn rounded-5 px-5 bg-success mt-3"> Advice
+                                        Or Work</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -213,21 +174,21 @@
             </div>
         </section>
         <!-- start completed 1 -->
-        <!-- <section>
+        <section :style="{ display: true_delete }">
             <div class="d-flex justify-content-center">
-                <div class="div_white shadow-lg p-3 mb-5 bg-body position-fixed" :style="{ display: divWhiteDisplay1 }">
+                <div class="div_white shadow-lg p-3 mb-5 bg-body position-fixed">
                     <div class="text-end pe-3">
-                        <div id="icon_close1" @click="hideDivWhite1">
+                        <div id="icon_close1" @click="button_delete">
                             <i class="fas fa-times fs-2"></i>
                         </div>
                         <div class="text-center container">
-                            <h4 class="text-success">Link Completed Successfully</h4>
-                            <img src="../../assets/verificationimage/imagetrue.png" class="py-5 w-75" alt="">
+                            <h4 class="text-danger">Deleted successfully</h4>
+                            <img src="../../assets/verificationimage/imageerror.png" class="py-5 w-75" alt="">
                         </div>
                     </div>
                 </div>
             </div>
-        </section> -->
+        </section>
         <!-- end completed 1 -->
         <!-- start completed 2 -->
         <section :style="{ display: divWhiteDisplay1 }">
@@ -270,7 +231,7 @@ export default {
             api_user: {},
             api_user1: {},
             api_user2: {},
-            divWhiteDisplay: 'none',
+            true_delete: 'none',
             divWhiteDisplay1: 'none',
         };
     },
@@ -278,6 +239,9 @@ export default {
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('invalidCredentials') === 'true') {
             this.divWhiteDisplay1 = 'block';
+        }
+        if (urlParams.get('true_delete') === 'true') {
+            this.true_delete = 'block';
         }
         const id = this.$route.query.id;
         axios
@@ -293,7 +257,7 @@ export default {
         axios
             .get(`http://localhost/graduatproject-main/src/components/folder%20english/page%20select%20client%20link%20join.php?id=${id}`)
             .then((response) => {
-                this.api_user2 = response.data;                
+                this.api_user2 = response.data;
             })
     },
     methods: {
@@ -301,7 +265,7 @@ export default {
             return `http://localhost/graduatproject-main/src/components/folder%20english/insert%20link%20vocational.php?id=${id}_${this.$route.query.id}`;
         },
         my_delete(id) {
-            return `http://localhost/graduatproject-main/src/components/folder%20english/delete%20client.php?id=${id}_${this.$route.query.id}`;
+            return `http://localhost/graduatproject-main/src/components/folder%20english/delete%20voctional.php?id=${id}_${this.$route.query.id}`;
         },
         getImagePath(imageName) {
             return require(`../../assets/imagedatabase/${imageName}`);
@@ -316,6 +280,9 @@ export default {
         },
         hideDivWhite1() {
             this.divWhiteDisplay1 = 'none';
+        },
+        button_delete() {
+            this.true_delete = 'none';
         },
         changePageTitle(newTitle) {
             document.title = newTitle;

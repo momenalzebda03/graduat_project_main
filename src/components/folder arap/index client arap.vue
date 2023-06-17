@@ -83,7 +83,7 @@
                                     <img :src="getImagePath(api.Vocational_Image)" alt="" class="rounded-circle">
                                 </td>
                                 <td>
-                                    <a :href="'my_page_voictional_arap/' + api.id">
+                                    <a :href="'my_page_voictional_arap/' + `${api.id}?id=${this.$route.query.id}`">
                                         <button @click="showDivWhite" :style="{ backgroundColor: buttonColor }"
                                             class="button_color text-white border-0 btn rounded-5 px-5 mt-3">الربط مع
                                             المهني</button>
@@ -119,8 +119,12 @@
                                 <td>
                                     <button type="button" @click="showDivWhite1" :style="{ backgroundColor: buttonColor }"
                                         class="button_color text-white border-0 btn rounded-5 px-5 bg-success mt-3">ربط</button>
-                                    <button type="button" @click="showDivWhite2" :style="{ backgroundColor: buttonColor }"
-                                        class="text-white border-0 btn rounded-5 ms-2 px-4 bg-danger button_red mt-3">رفض</button>
+                                    <a :href="my_delete(my_api.id)">
+                                        <button type="button" :style="{ backgroundColor: buttonColor }"
+                                            class="text-white border-0 btn rounded-5 ms-2 px-4 bg-danger button_red mt-3">
+                                            رفض
+                                        </button>
+                                    </a>
                                 </td>
                             </tr>
                         </tbody>
@@ -212,7 +216,7 @@
         </section>
         <!-- end main -->
         <!-- start completed 1 -->
-        <section>
+        <!-- <section>
             <div class="d-flex justify-content-center">
                 <div class="div_white shadow-lg p-3 mb-5 bg-body position-fixed" :style="{ display: divWhiteDisplay1 }">
                     <div class="text-end pe-3">
@@ -226,14 +230,14 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
         <!-- end completed 1 -->
         <!-- start completed 2 -->
-        <section>
+        <section :style="{ display: true_delete }">
             <div class="d-flex justify-content-center">
-                <div class="div_white shadow-lg p-3 mb-5 bg-body position-fixed" :style="{ display: divWhiteDisplay2 }">
+                <div class="div_white shadow-lg p-3 mb-5 bg-body position-fixed">
                     <div class="text-end pe-3">
-                        <div id="icon_close1" @click="hideDivWhite2">
+                        <div id="icon_close1" @click="hideDivWhite">
                             <i class="fas fa-times fs-2"></i>
                         </div>
                         <div class="text-center container">
@@ -269,12 +273,14 @@ export default {
             api_user: {},
             api_user1: {},
             api_user2: {},
-            divWhiteDisplay: 'none',
-            divWhiteDisplay1: 'none',
-            divWhiteDisplay2: 'none',
+            true_delete: 'none',
         };
     },
     mounted() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('true_delete') === 'true') {
+            this.true_delete = 'block';
+        }
         const id = this.$route.query.id;
         axios
             .get(`http://localhost/graduatproject-main/src/components/folder%20english/select%20page%20client%20english%20id.php?id=${id}`)
@@ -293,6 +299,9 @@ export default {
             })
     },
     methods: {
+        my_delete(id) {
+            return `http://localhost/graduatproject-main/src/components/folder%20arap/delete%20client%20arap.php?id=${this.$route.query.id}_${id}`;
+        },
         getImagePath(imageName) {
             return require(`../../assets/imagedatabase/${imageName}`);
         },
@@ -304,23 +313,8 @@ export default {
             const container = document.getElementById("container");
             container.classList.add("right-panel-active");
         },
-        showDivWhite() {
-            this.divWhiteDisplay = 'block';
-        },
         hideDivWhite() {
-            this.divWhiteDisplay = 'none';
-        },
-        showDivWhite1() {
-            this.divWhiteDisplay1 = 'block';
-        },
-        hideDivWhite1() {
-            this.divWhiteDisplay1 = 'none';
-        },
-        showDivWhite2() {
-            this.divWhiteDisplay2 = 'block';
-        },
-        hideDivWhite2() {
-            this.divWhiteDisplay2 = 'none';
+            this.true_delete = 'none';
         },
         changePageTitle(newTitle) {
             document.title = newTitle;
