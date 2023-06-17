@@ -12,10 +12,12 @@
                             :style="{ backgroundColor: buttonColor }">مرحبا انا</p>
                         <h1 class="fw-bold mt-4 text_black">{{ api_user.Name_Vocational }}</h1>
                         <p class="mt-2 text-secondary">{{ api_user.Vocational_Job_Description }}</p>
-                        <div class="d-flex justify-content-center justify-content-lg-end mt-4">
-                            <button type="button" @:click="showDivWhite" :style="{ backgroundColor: buttonColor }"
-                                @click="changeButtonColor"
-                                class="button_color text-white border-0 btn rounded-5 px-5">ربط</button>
+                        <div v-for="api in  api_user1 " :key="api.Customer_Id"
+                            class="d-flex justify-content-center justify-content-lg-end mt-4">
+                            <a :href="getLink(api.Customer_Id)">
+                                <button type="button" :style="{ backgroundColor: buttonColor }"
+                                    class="button_color text-white border-0 btn rounded-5 px-5">ربط</button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -209,6 +211,7 @@ export default {
     data() {
         return {
             api_user: {},
+            api_user1: {},
             divWhiteDisplay: 'none',
         };
     },
@@ -219,8 +222,16 @@ export default {
             .then((response) => {
                 this.api_user = response.data;
             })
+        axios
+            .get(`http://localhost/graduatproject-main/src/components/folder%20english/select%20page%20client%20english.php`)
+            .then((response) => {
+                this.api_user1 = response.data;
+            });
     },
     methods: {
+        getLink(id) {
+            return `http://localhost/graduatproject-main/src/components/folder%20english/insert%20link%20vocational.php?id=${id}_${this.$route.params.id}`;
+        },
         getImagePath(imageName) {
             if (imageName) {
                 return require(`../../assets/imagedatabase/${imageName}`);

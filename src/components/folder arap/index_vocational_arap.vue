@@ -77,7 +77,7 @@
                             </tr>
                         </thead>
                         <tbody :style="{ color: textColor }">
-                            <tr v-for="api in api_user1" :key="api.id">
+                            <tr v-for="api in  api_user1 " :key="api.id">
                                 <td>{{ api.Customer_Name }}</td>
                                 <td>{{ api.Customer_Required_profession }}</td>
                                 <td>
@@ -85,8 +85,7 @@
                                 </td>
                                 <td>
                                     <a :href="getLink(api.Customer_Id)">
-                                        <button type="button" @click="showDivWhite"
-                                            :style="{ backgroundColor: buttonColor }"
+                                        <button type="button" :style="{ backgroundColor: buttonColor }"
                                             class="button_color text-white border-0 btn rounded-5 px-5 mt-3">ربط</button>
                                     </a>
                                 </td>
@@ -120,9 +119,12 @@
                                 <td>
                                     <button type="button" @click="showDivWhite1" :style="{ backgroundColor: buttonColor }"
                                         class="button_color text-white border-0 btn rounded-5 px-5 bg-success mt-3">link</button>
-                                    <button type="button" @click="showDivWhite2" :style="{ backgroundColor: buttonColor }"
-                                        class="text-white border-0 btn rounded-5 ms-2 px-4 bg-danger button_red mt-3">To
-                                        Reject</button>
+                                    <a :href="my_delete(my_api.Customer_Id)">
+                                        <button type="button" :style="{ backgroundColor: buttonColor }"
+                                            class="text-white border-0 btn rounded-5 ms-2 px-4 bg-danger button_red mt-3">
+                                            To Reject
+                                        </button>
+                                    </a>
                                 </td>
                             </tr>
                         </tbody>
@@ -233,16 +235,16 @@
         </section>
         <!-- end completed 1 -->
         <!-- start completed 2 -->
-        <section>
+        <section :style="{ display: divWhiteDisplay1 }">
             <div class="d-flex justify-content-center">
-                <div class="div_white shadow-lg p-3 mb-5 bg-body position-fixed" :style="{ display: divWhiteDisplay2 }">
+                <div class="div_white shadow-lg p-3 mb-5 bg-body position-fixed">
                     <div class="text-end pe-3">
-                        <div id="icon_close1" @click="hideDivWhite2">
-                            <i class="fas fa-times fs-2"></i>
+                        <div id="icon_close1">
+                            <i class="fas fa-times fs-2" @click="hideDivWhite1"></i>
                         </div>
                         <div class="text-center container">
-                            <h4 class="text-danger">تم حذف الشخص</h4>
-                            <img src="../../assets/verificationimage/imageerror.png" class="py-5 w-75" alt="">
+                            <h4 class="text-success">تم الربط بنجاح</h4>
+                            <img src="../../assets/verificationimage/imagetrue.png" class="py-5 w-75" alt="">
                         </div>
                     </div>
                 </div>
@@ -275,10 +277,13 @@ export default {
             api_user2: {},
             divWhiteDisplay: 'none',
             divWhiteDisplay1: 'none',
-            divWhiteDisplay2: 'none',
         };
     },
     mounted() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('invalidCredentials') === 'true') {
+            this.divWhiteDisplay1 = 'block';
+        }
         const id = this.$route.query.id;
         axios
             .get(`http://localhost/graduatproject-main/src/components/folder%20english/select%20page%20voicational%20english.php?id=${id}`)
@@ -298,7 +303,10 @@ export default {
     },
     methods: {
         getLink(id) {
-            return `http://localhost/graduatproject-main/src/components/folder%20english/insert%20link%20vocational.php?id=${id + this.$route.query.id}`;
+            return `http://localhost/graduatproject-main/src/components/folder%20arap/insert%20link%20vocational%20arap.php?id=${id}_${this.$route.query.id}`;
+        },
+        my_delete(id) {
+            return `http://localhost/graduatproject-main/src/components/folder%20english/delete%20client.php?id=${id}_${this.$route.query.id}`;
         },
         getImagePath(imageName) {
             return require(`../../assets/imagedatabase/${imageName}`);
@@ -311,23 +319,8 @@ export default {
             const container = document.getElementById("container");
             container.classList.add("right-panel-active");
         },
-        showDivWhite() {
-            this.divWhiteDisplay = 'block';
-        },
-        hideDivWhite() {
-            this.divWhiteDisplay = 'none';
-        },
-        showDivWhite1() {
-            this.divWhiteDisplay1 = 'block';
-        },
         hideDivWhite1() {
             this.divWhiteDisplay1 = 'none';
-        },
-        showDivWhite2() {
-            this.divWhiteDisplay2 = 'block';
-        },
-        hideDivWhite2() {
-            this.divWhiteDisplay2 = 'none';
         },
         changePageTitle(newTitle) {
             document.title = newTitle;

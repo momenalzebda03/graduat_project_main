@@ -9,9 +9,9 @@
                             :style="{ backgroundColor: buttonColor }">hello, i am</p>
                         <h1 class="fw-bold mt-4 text_black">{{ api_user.Name_Vocational }}</h1>
                         <p class="mt-2 text-secondary">{{ api_user.Vocational_Job_Description }}</p>
-                        <div v-for="api in  api_user1 " :key="api.Customer_Id"
+                        <div v-for="my_api in api_user2" :key="my_api.Customer_Name"
                             class="d-flex justify-content-center justify-content-lg-start mt-4">
-                            <a :href="getLink(api.Customer_Id)">
+                            <a :href="getLink(my_api.Customer_Id)">
                                 <button type="button" :style="{ backgroundColor: buttonColor }"
                                     class="button_color text-white border-0 btn rounded-5 px-5">link</button>
                             </a>
@@ -212,6 +212,7 @@ export default {
         return {
             api_user: {},
             api_user1: {},
+            api_user2: {},
             divWhiteDisplay: 'none',
         };
     },
@@ -227,10 +228,15 @@ export default {
             .then((response) => {
                 this.api_user1 = response.data;
             });
+        axios
+            .get(`http://localhost/graduatproject-main/src/components/folder%20english/select%20page%20client%20english%20id.php?id=${id}`)
+            .then((response) => {
+                this.api_user2 = response.data;
+            })
     },
     methods: {
         getLink(id) {
-            return `http://localhost/graduatproject-main/src/components/folder%20english/insert%20link%20vocational.php?id=${id}_${this.$route.params.id}`;
+            return `http://localhost/graduatproject-main/src/components/folder%20english/my%20insert%20link%20vocational.php?id=${id}_${this.$route.query.id}`;
         },
         getImagePath(imageName) {
             if (imageName) {

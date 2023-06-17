@@ -83,12 +83,11 @@
                                     <img :src="getImagePath(api.Vocational_Image)" alt="" class="rounded-circle">
                                 </td>
                                 <td>
-                                    <router-link to="/my_page_voictional_arap"
-                                        :class="{ 'active1': $route.path === '/my_page_voictional_arap' }">
+                                    <a :href="'my_page_voictional_arap/' + api.id">
                                         <button @click="showDivWhite" :style="{ backgroundColor: buttonColor }"
-                                            class="button_color text-white border-0 btn rounded-5 px-5 mt-3">صفحة
+                                            class="button_color text-white border-0 btn rounded-5 px-5 mt-3">الربط مع
                                             المهني</button>
-                                    </router-link>
+                                    </a>
                                 </td>
                             </tr>
                         </tbody>

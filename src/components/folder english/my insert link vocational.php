@@ -20,7 +20,7 @@ if ($existingCount > 0) {
     $insertStatement->bindParam(':number2', $number2);
 
     if ($insertStatement->execute()) {
-        $url_english = "http://localhost:8080/index_vocational_english?id=$number1&invalidCredentials=true";
+        $url_english = "http://localhost:8080/my_page_voictional_english?id=$number1&invalidCredentials=true";
         header("Location: " . $url_english);
     } else {
         echo "Oops, an error occurred";

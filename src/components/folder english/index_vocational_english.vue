@@ -213,7 +213,7 @@
             </div>
         </section>
         <!-- start completed 1 -->
-        <section>
+        <!-- <section>
             <div class="d-flex justify-content-center">
                 <div class="div_white shadow-lg p-3 mb-5 bg-body position-fixed" :style="{ display: divWhiteDisplay1 }">
                     <div class="text-end pe-3">
@@ -227,8 +227,25 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
         <!-- end completed 1 -->
+        <!-- start completed 2 -->
+        <section :style="{ display: divWhiteDisplay1 }">
+            <div class="d-flex justify-content-center">
+                <div class="div_white shadow-lg p-3 mb-5 bg-body position-fixed">
+                    <div class="text-end pe-3">
+                        <div id="icon_close1">
+                            <i class="fas fa-times fs-2" @click="hideDivWhite1"></i>
+                        </div>
+                        <div class="text-center container">
+                            <h4 class="text-success">Link completed successfully</h4>
+                            <img src="../../assets/verificationimage/imagetrue.png" class="py-5 w-75" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end completed 2 -->
     </div>
 </template>
 
@@ -258,6 +275,10 @@ export default {
         };
     },
     mounted() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('invalidCredentials') === 'true') {
+            this.divWhiteDisplay1 = 'block';
+        }
         const id = this.$route.query.id;
         axios
             .get(`http://localhost/graduatproject-main/src/components/folder%20english/select%20page%20voicational%20english.php?id=${id}`)
@@ -272,8 +293,7 @@ export default {
         axios
             .get(`http://localhost/graduatproject-main/src/components/folder%20english/page%20select%20client%20link%20join.php?id=${id}`)
             .then((response) => {
-                this.api_user2 = response.data;
-                console.log(this.api_user2 = response.data);
+                this.api_user2 = response.data;                
             })
     },
     methods: {
@@ -293,9 +313,6 @@ export default {
         signUp() {
             const container = document.getElementById("container");
             container.classList.add("right-panel-active");
-        },
-        showDivWhite1() {
-            this.divWhiteDisplay1 = 'block';
         },
         hideDivWhite1() {
             this.divWhiteDisplay1 = 'none';
