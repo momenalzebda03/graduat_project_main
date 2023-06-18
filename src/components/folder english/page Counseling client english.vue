@@ -3,14 +3,13 @@
         <!-- start main -->
         <section class="mt-4 text_black" :style="{ color: textColor }">
             <div class="text-center container">
-                <div class="d-flex flex-column flex-lg-row">
+                <div class="d-flex flex-column flex-lg-row my-5">
                     <div class="w-100 me-0 me-lg-1">
                         <h4>We Help And Solve Your Business Problem</h4>
                         <h5>Customers</h5>
-                        <p class="mt-4">ahmeda hamed</p>
+                        <p class="mt-4">{{ api_user1.Customer_Name }}</p>
                         <div>
-                            <img src="../../assets/imageheader/professional-headshots-nyc-043.png" class="image_header"
-                                alt="">
+                            <img :src="getImagePath(api_user1.Customer_Image)" class="image_header" alt="">
                             <br>
                             <textarea class="mt-3 pt-2 ps-2 rounded-3 my_texteara" placeholder="Sent Message..." cols="60"
                                 rows="7"></textarea>
@@ -24,90 +23,29 @@
                     <div class="w-100 mt-5 pt-5 ms-0 ms-lg-2 pt-lg-0 mt-lg-0">
                         <h4>We Help And Solve Your Business Problem</h4>
                         <h5>Vocational</h5>
-                        <p class="mt-4">ahmeda hamed</p>
-                        <div>
-                            <img src="../../assets/imageheader/professional-headshots-nyc-043.png" class="image_header"
-                                alt="">
+                        <div v-for="my_api in api_user" :key="my_api.Customer_Id">
+                            <p class="mt-4">{{ my_api.Name_Vocational }}</p>
+                            <img :src="getImagePath(my_api.Vocational_Image)" class="image_header" alt="">
                             <br>
                             <textarea class="mt-3 pt-2 ps-2 rounded-3 my_texteara" cols="60" rows="7"
                                 readonly>Sent Message...</textarea>
                             <br>
-                            <button type="button" @:click="showDivWhite" :style="{ backgroundColor: buttonColor }"
-                                @click="changeButtonColor"
+                            <button type="button" :style="{ backgroundColor: buttonColor }"
                                 class="button_color text-white border-0 btn rounded-5 px-5 bg-success mt-3">Reply</button>
-                            <button type="button" @:click="showDivWhite1" @click="changeButtonColor"
-                                class="text-white border-0 btn rounded-5 px-5 button_red bg-danger mt-3">delete</button>
-                        </div>
-                        <p class="mt-5">ahmeda hamed</p>
-                        <div>
-                            <img src="../../assets/imageheader/professional-headshots-nyc-043.png" class="image_header"
-                                alt="">
-                            <br>
-                            <textarea class="mt-3 pt-2 ps-2 rounded-3 my_texteara" cols="60" rows="7"
-                                readonly>Sent Message...</textarea>
-                            <br>
-                            <button type="button" id="button"
-                                class="button_color text-white border-0 btn rounded-5 px-5 bg-success mt-3">Reply</button>
-                            <button type="button" id="button1"
-                                class="text-white border-0 btn rounded-5 px-5 button_red bg-danger mt-3">delete</button>
-                        </div>
-                        <p class="mt-5">ahmeda hamed</p>
-                        <div class="mb-3">
-                            <img src="../../assets/imageheader/professional-headshots-nyc-043.png" class="image_header"
-                                alt="">
-                            <br>
-                            <textarea class="mt-3 pt-2 ps-2 rounded-3 my_texteara" cols="60" rows="7"
-                                readonly>Sent Message...</textarea>
-                            <br>
-                            <button type="button" id="button"
-                                class="button_color text-white border-0 btn rounded-5 px-5 bg-success mt-3">Reply</button>
-                            <button type="button" id="button1"
-                                class="text-white border-0 btn rounded-5 px-5 button_red bg-danger mt-3">delete</button>
+                            <button type="button"
+                                class="text-white border-0 btn rounded-5 ms-3 px-5 button_red bg-danger mt-3">delete</button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
         <!-- end main -->
-        <!-- start completed 1 -->
-        <section>
-            <div class="d-flex justify-content-center">
-                <div class="div_white shadow-lg p-3 mb-5 bg-body position-fixed" :style="{ display: divWhiteDisplay }">
-                    <div class="text-end pe-3">
-                        <div id="icon_close1" @click="hideDivWhite">
-                            <i class="fas fa-times fs-2"></i>
-                        </div>
-                        <div class="text-center container">
-                            <h4 class="text-success">The message has been sent successfully</h4>
-                            <img src="../../assets/verificationimage/imagetrue.png" class="py-5 w-75" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end completed 1 -->
-        <!-- start completed 2 -->
-        <section>
-            <div class="d-flex justify-content-center">
-                <div class="div_white shadow-lg p-3 mb-5 bg-body position-fixed" :style="{ display: divWhiteDisplay1 }">
-                    <div class="text-end pe-3">
-                        <div id="icon_close1" @click="hideDivWhite1">
-                            <i class="fas fa-times fs-2"></i>
-                        </div>
-                        <div class="text-center container">
-                            <h4 class="text-danger">delete</h4>
-                            <img src="../../assets/verificationimage/imageerror.png" class="py-5 w-75" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- end completed 2 -->
     </div>
 </template>
 
 <script>
 import "../../App.vue";
+import axios from 'axios';
 export default {
     name: "ComponentHome",
     computed: {
@@ -118,16 +56,34 @@ export default {
             return this.$root.buttonColor;
         },
     },
+    data() {
+        return {
+            api_user: {},
+            api_user1: {}
+        };
+    },
     created() {
         this.changePageTitle('COUNSELING VOICATIONAL');
     },
-    data() {
-        return {
-            divWhiteDisplay: 'none',
-            divWhiteDisplay1: 'none',
-        };
+    mounted() {
+        const id = this.$route.params.id;
+        axios
+            .get(`http://localhost/graduatproject-main/src/components/folder%20english/page%20select%20links%20join.php/?id=${id}`)
+            .then((response) => {
+                this.api_user = response.data;
+            });
+        axios
+            .get(`http://localhost/graduatproject-main/src/components/folder%20english/select%20page%20client%20english%20id.php/?id=${id}`)
+            .then((response) => {
+                this.api_user1 = response.data;
+            });
     },
     methods: {
+        getImagePath(imageName) {
+            if (imageName) {
+                return require(`../../assets/imagedatabase/${imageName}`);
+            }
+        },
         signIn() {
             const container = document.getElementById("container");
             container.classList.remove("right-panel-active");
@@ -135,18 +91,6 @@ export default {
         signUp() {
             const container = document.getElementById("container");
             container.classList.add("right-panel-active");
-        },
-        showDivWhite() {
-            this.divWhiteDisplay = 'block';
-        },
-        hideDivWhite() {
-            this.divWhiteDisplay = 'none';
-        },
-        showDivWhite1() {
-            this.divWhiteDisplay1 = 'block';
-        },
-        hideDivWhite1() {
-            this.divWhiteDisplay1 = 'none';
         },
         changePageTitle(newTitle) {
             document.title = newTitle;

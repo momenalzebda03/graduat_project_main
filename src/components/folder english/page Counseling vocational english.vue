@@ -3,8 +3,8 @@
         <!-- start main -->
         <section class="mt-4" :style="{ color: textColor }">
             <div class="text-center container">
-                <div class="d-flex flex-column flex-lg-row">
-                    <div class="w-100 me-0 me-lg-1 my-5">
+                <div class="d-flex flex-column flex-lg-row my-5">
+                    <div class="w-100 me-0 me-lg-1">
                         <h4>We Help And Solve Your Business Problem</h4>
                         <h5>Vocational</h5>
                         <p class="mt-4">{{ api_user1.Name_Vocational }}</p>
@@ -15,7 +15,7 @@
                                 rows="7"></textarea>
                         </div>
                     </div>
-                    <div class="w-100 ms-0 ms-lg-2 my-5">
+                    <div class="w-100 ms-0 ms-lg-2">
                         <h4>We Help And Solve Your Business Problem</h4>
                         <h5>Customers</h5>
                         <div v-for="my_api in api_user" :key="my_api.Customer_Id">

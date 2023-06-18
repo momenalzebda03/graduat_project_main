@@ -117,8 +117,6 @@
                                     <img :src="getImagePath(my_api.Vocational_Image)" alt="" class="rounded-circle">
                                 </td>
                                 <td>
-                                    <button type="button" @click="showDivWhite1" :style="{ backgroundColor: buttonColor }"
-                                        class="button_color text-white border-0 btn rounded-5 px-5 bg-success mt-3">ربط</button>
                                     <a :href="my_delete(my_api.id)">
                                         <button type="button" :style="{ backgroundColor: buttonColor }"
                                             class="text-white border-0 btn rounded-5 ms-2 px-4 bg-danger button_red mt-3">
@@ -145,55 +143,18 @@
                                 <td>الزر</td>
                             </tr>
                         </thead>
-                        <tbody :style="{ color: textColor }">
+                        <tbody v-for="my_api in api_user2" :key="my_api.Name_Vocational" :style="{ color: textColor }">
                             <tr>
-                                <td>محمد احمد</td>
-                                <td>دكتور</td>
+                                <td>{{ my_api.Name_Vocational }}</td>
+                                <td>{{ my_api.Vocational_Job_Description }}</td>
                                 <td>
-                                    <img src="../../assets/imageheader/professional-headshots-nyc-043.png" alt="">
+                                    <img :src="getImagePath(my_api.Vocational_Image)" alt="" class="rounded-circle">
                                 </td>
                                 <td>
-                                    <router-link to="/page_counseling_client_arap" :style="{ color: textColor }"
-                                        aria-current="page"
-                                        :class="{ 'active1': $route.path === '/page_counseling_client_arap' }">
+                                    <router-link :to="`/page_Counseling_client_arap/${this.$route.query.id}`">
                                         <button type="button" :style="{ backgroundColor: buttonColor }"
-                                            @click="changeButtonColor"
-                                            class="button_color text-white border-0 btn rounded-5 px-4 mt-3">تواصل
-                                            واستشارة</button>
-                                    </router-link>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>محمد احمد</td>
-                                <td>دكتور</td>
-                                <td>
-                                    <img src="../../assets/imageheader/professional-headshots-nyc-043.png" alt="">
-                                </td>
-                                <td>
-                                    <router-link to="/page_counseling_client_arap" :style="{ color: textColor }"
-                                        aria-current="page"
-                                        :class="{ 'active1': $route.path === '/page_counseling_client_arap' }">
-                                        <button type="button" :style="{ backgroundColor: buttonColor }"
-                                            @click="changeButtonColor"
-                                            class="button_color text-white border-0 btn rounded-5 px-4 mt-3">تواصل
-                                            واستشارة</button>
-                                    </router-link>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>محمد احمد</td>
-                                <td>دكتور</td>
-                                <td>
-                                    <img src="../../assets/imageheader/professional-headshots-nyc-043.png" alt="">
-                                </td>
-                                <td>
-                                    <router-link to="/page_counseling_client_arap" :style="{ color: textColor }"
-                                        aria-current="page"
-                                        :class="{ 'active1': $route.path === '/page_counseling_client_arap' }">
-                                        <button type="button" :style="{ backgroundColor: buttonColor }"
-                                            @click="changeButtonColor"
-                                            class="button_color text-white border-0 btn rounded-5 px-4 mt-3">تواصل
-                                            واستشارة</button>
+                                            class="button_color text-white border-0 btn rounded-5 px-5 bg-success mt-3">
+                                            أستشارة او تواصل</button>
                                     </router-link>
                                 </td>
                             </tr>

@@ -115,8 +115,6 @@
                                     <img :src="getImagePath(my_api.Customer_Image)" alt="" class="rounded-circle">
                                 </td>
                                 <td>
-                                    <button type="button" @click="showDivWhite1" :style="{ backgroundColor: buttonColor }"
-                                        class="button_color text-white border-0 btn rounded-5 px-5 bg-success mt-3">link</button>
                                     <a :href="my_delete(my_api.Customer_Id)">
                                         <button type="button" :style="{ backgroundColor: buttonColor }"
                                             class="text-white border-0 btn rounded-5 ms-2 px-4 bg-danger button_red mt-3">
@@ -151,9 +149,12 @@
                                     <img :src="getImagePath(my_api.Customer_Image)" alt="" class="rounded-circle">
                                 </td>
                                 <td>
-                                    <button type="button" @click="showDivWhite1" :style="{ backgroundColor: buttonColor }"
-                                        class="button_color text-white border-0 btn rounded-5 px-5 bg-success mt-3"> Advice
-                                        Or Work</button>
+                                    <router-link :to="`/page_counseling_voiactional_english/${this.$route.query.id}`">
+                                        <button type="button" :style="{ backgroundColor: buttonColor }"
+                                            class="button_color text-white border-0 btn rounded-5 px-5 bg-success mt-3">
+                                            Advice
+                                            Or Work</button>
+                                    </router-link>
                                 </td>
                             </tr>
                         </tbody>

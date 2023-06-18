@@ -87,12 +87,12 @@ const routes = [
       import("../components/folder arap/page Counseling vocational arap.vue"),
   },
   {
-    path: "/page_counseling_client_english",
+    path: "/page_counseling_client_english/:id",
     component: () =>
       import("../components/folder english/page Counseling client english.vue"),
   },
   {
-    path: "/page_counseling_client_arap",
+    path: "/page_counseling_client_arap/:id",
     component: () =>
       import("../components/folder arap/page Counseling client arap.vue"),
   },

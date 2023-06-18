@@ -115,8 +115,6 @@
                                     <img :src="getImagePath(my_api.Vocational_Image)" alt="" class="rounded-circle">
                                 </td>
                                 <td>
-                                    <button type="button" @click="showDivWhite1" :style="{ backgroundColor: buttonColor }"
-                                        class="button_color text-white border-0 btn rounded-5 px-5 bg-success mt-3">link</button>
                                     <a :href="my_delete(my_api.id)">
                                         <button type="button" :style="{ backgroundColor: buttonColor }"
                                             class="text-white border-0 btn rounded-5 ms-2 px-4 bg-danger button_red mt-3">
@@ -143,55 +141,19 @@
                                 <td>Status</td>
                             </tr>
                         </thead>
-                        <tbody :style="{ color: textColor }">
+                        <tbody v-for="my_api in api_user2" :key="my_api.Name_Vocational" :style="{ color: textColor }">
                             <tr>
-                                <td>Ministry Wikipedia</td>
-                                <td>doctor</td>
+                                <td>{{ my_api.Name_Vocational }}</td>
+                                <td>{{ my_api.Vocational_Job_Description }}</td>
                                 <td>
-                                    <img src="../../assets/imageheader/professional-headshots-nyc-043.png" alt="">
+                                    <img :src="getImagePath(my_api.Vocational_Image)" alt="" class="rounded-circle">
                                 </td>
                                 <td>
-                                    <router-link to="/page_counseling_client_english" :style="{ color: textColor }"
-                                        aria-current="page"
-                                        :class="{ 'active1': $route.path === '/page_counseling_client_english' }">
+                                    <router-link :to="`/page_Counseling_client_english/${this.$route.query.id}`">
                                         <button type="button" :style="{ backgroundColor: buttonColor }"
-                                            @click="changeButtonColor"
-                                            class="button_color text-white border-0 btn rounded-5 px-4 mt-3">Advice Or
-                                            Work</button>
-                                    </router-link>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Ministry Wikipedia</td>
-                                <td>doctor</td>
-                                <td>
-                                    <img src="../../assets/imageheader/professional-headshots-nyc-043.png" alt="">
-                                </td>
-                                <td>
-                                    <router-link to="/page_counseling_client_english" :style="{ color: textColor }"
-                                        aria-current="page"
-                                        :class="{ 'active1': $route.path === '/page_counseling_client_english' }">
-                                        <button type="button" :style="{ backgroundColor: buttonColor }"
-                                            @click="changeButtonColor"
-                                            class="button_color text-white border-0 btn rounded-5 px-4 mt-3">Advice Or
-                                            Work</button>
-                                    </router-link>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Ministry Wikipedia</td>
-                                <td>doctor</td>
-                                <td>
-                                    <img src="../../assets/imageheader/professional-headshots-nyc-043.png" alt="">
-                                </td>
-                                <td>
-                                    <router-link to="/page_counseling_client_english" :style="{ color: textColor }"
-                                        aria-current="page"
-                                        :class="{ 'active1': $route.path === '/page_counseling_client_english' }">
-                                        <button type="button" :style="{ backgroundColor: buttonColor }"
-                                            @click="changeButtonColor"
-                                            class="button_color text-white border-0 btn rounded-5 px-4 mt-3">Advice Or
-                                            Work</button>
+                                            class="button_color text-white border-0 btn rounded-5 px-5 bg-success mt-3">
+                                            Advice
+                                            Or Work</button>
                                     </router-link>
                                 </td>
                             </tr>
@@ -213,23 +175,6 @@
             </div>
         </section>
         <!-- end main -->
-        <!-- start completed 1 -->
-        <!-- <section>
-            <div class="d-flex justify-content-center">
-                <div class="div_white shadow-lg p-3 mb-5 bg-body position-fixed" :style="{ display: divWhiteDisplay1 }">
-                    <div class="text-end pe-3">
-                        <div id="icon_close1" @click="hideDivWhite1">
-                            <i class="fas fa-times fs-2"></i>
-                        </div>
-                        <div class="text-center container">
-                            <h4 class="text-success">Link Completed Successfully</h4>
-                            <img src="../../assets/verificationimage/imagetrue.png" class="py-5 w-75" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-        <!-- end completed 1 -->
         <!-- start completed 2 -->
         <section :style="{ display: true_delete }">
             <div class="d-flex justify-content-center">
