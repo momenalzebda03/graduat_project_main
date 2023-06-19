@@ -3,7 +3,7 @@
         <div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-offset="0" class="scrollspy-example"
             tabindex="0">
             <!-- start main -->
-            <section class="mt-2 p-0 mt-5 pt-lg-5" id="scrollspyHeading1">
+            <section class="p-0 my-3 pt-lg-5" id="scrollspyHeading1">
                 <div class="container">
                     <div class="row">
                         <div class="col-12 col-lg-6 mt-0 mt-lg-5" data-aos="fade-right">
@@ -13,7 +13,8 @@
                                     ease of seeing clients and<br>professionals.</p>
                                 <button @:click="showDivWhite" type="button" :style="{ backgroundColor: buttonColor }"
                                     @click="changeButtonColor"
-                                    class="button_color text-white border-0 btn rounded-5 px-4">Sign In / Sign Up</button>
+                                    class="button_color text-white border-0 btn rounded-5 px-4 my-2">Sign In / Sign
+                                    Up</button>
                             </div>
                         </div>
                         <div class="col-12 col-lg-6 mt-3 mt-lg-0 div_none overflow-hidden" data-aos="fade-left">
@@ -45,12 +46,12 @@
                                         </h3>
                                         <button type="button" id="button_signup" :style="{ backgroundColor: buttonColor }"
                                             @click="changeButtonColor"
-                                            class="mt-3 button_color text-white border-0 btn btn-primary rounded-5 px-4 fs-5">sign
+                                            class="mt-3 button_color text-white border-0 btn btn-primary rounded-5 px-4 fs-6">sign
                                             in / Sign Up</button>
                                         <br>
                                         <br>
                                         <details class="custom-select position-relative">
-                                            <summary class="radios p-3 rounded-5">
+                                            <summary class="radios p-2 p-md-3 rounded-5">
                                                 <input type="radio" name="item" id="default" title="personal" checked>
                                                 <input type="radio" name="item" id="vocational" title="vocational">
                                                 <input type="radio" name="item" id="Client" title="Client">
@@ -478,7 +479,7 @@
                                     class="text-center more_hover text-decoration-none">learn more</router-link>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6 col-lg-4 mt-3" data-aos="fade-up">
+                        <div class="col-12 col-md-12 col-lg-4 mt-3" data-aos="fade-up">
                             <div class="card pb-2 h-100">
                                 <img src="../../assets/imageblogposts/Blogthree.png" class="card-img-top" alt="...">
                                 <div class="card-body pb-0">

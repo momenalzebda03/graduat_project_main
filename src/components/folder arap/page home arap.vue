@@ -3,7 +3,7 @@
         <div data-bs-spy="scroll" data-bs-target="#navbar-example-arap" data-bs-offset="0" class="scrollspy-example"
             tabindex="0">
             <!-- start main -->
-            <section class="mt-2 p-0 mt-5 pt-lg-5" id="scrollspyHeading1">
+            <section class="p-0 my-3 pt-lg-5" id="scrollspyHeading1">
                 <div class="container">
                     <div class="row">
                         <div class="col-12 col-lg-6 mt-3 mt-lg-0 div_none" data-aos="fade-right">
@@ -118,7 +118,7 @@
                                 </router-link>
                             </div>
                         </div>
-                        <div class="col-12 col-md-12 col-lg-4 mt-4" data-aos="fade-down">
+                        <div class="col-12 col-md-6 col-lg-4 mt-4" data-aos="fade-down">
                             <i
                                 class="fas fa-user-md translate_icon position-absolute p-3 fs-3 rounded-circle text-white"></i>
                             <div class="ag-courses_item div_color w-100 h-75 overflow-hidden rounded-3">
@@ -167,7 +167,7 @@
                                 </router-link>
                             </div>
                         </div>
-                        <div class="col-12 col-md-12 col-lg-4 mt-4" data-aos="fade-down">
+                        <div class="col-12 col-md-6 col-lg-4 mt-4" data-aos="fade-down">
                             <i class="fas fa-star translate_icon position-absolute p-3 fs-3 rounded-circle text-white"></i>
                             <div class="ag-courses_item div_color w-100 h-75 overflow-hidden rounded-3">
                                 <router-link :to="`/read_more_arap/${number = 6}`"
@@ -468,7 +468,7 @@
                                     class="text-center more_hover text-decoration-none">قراءة المزيد</router-link>
                             </div>
                         </div>
-                        <div class="col-12 col-md-6 col-lg-4 mt-3" data-aos="fade-up">
+                        <div class="col-12 col-md-12 col-lg-4 mt-3" data-aos="fade-up">
                             <div class="card pb-2 h-100">
                                 <img src="../../assets/imageblogposts/Blogthree.png" class="card-img-top" alt="...">
                                 <div class="card-body pb-0 text-center text-lg-end">

@@ -1,7 +1,7 @@
 <template>
     <div>
         <!-- start completed 1 -->
-        <section class="mt-0 mt-lg-4 pb-5 container overflow-hidden" :style="{ color: textColor }">
+        <section class="container overflow-hidden" :style="{ color: textColor }">
             <div class="row">
                 <div data-aos="fade-right" class="col-12 col-lg-6 d-flex align-items-center justify-content-center">
                     <div class="mt-5 pt-5 text-center text-lg-start">
@@ -17,14 +17,15 @@
                         </a>
                     </div>
                 </div>
-                <div data-aos="fade-left" class="col-12 col-lg-6 d-flex justify-content-center mt-3 mt-lg-0">
-                    <img :src="getImagePath(api_user.Vocational_Image)" alt="" class="image_100 rounded-4">
+                <div data-aos="fade-left" class="col-12 col-lg-6 d-flex justify-content-center pt-0 mt-3 mt-md-5 pt-md-5">
+                    <img :src="getImagePath(api_user.Vocational_Image)" alt="" class="rounded-4 w-50 h-100">
                 </div>
             </div>
-            <a href="#link_bottom" class="d-flex justify-content-center text-decoration-none mt-5">
+            <a href="#link_bottom" class="d-flex justify-content-center text-decoration-none my-3">
                 <i class="fas fa-arrow-down fs-3 p-3 icon_arrow position-absolute"></i>
             </a>
         </section>
+        <!-- end completed 1 -->
         <!-- start completed 2 -->
         <section :style="{ display: divWhiteDisplay1 }">
             <div class="d-flex justify-content-center">
@@ -45,7 +46,7 @@
         <!-- start read -->
         <section class="mt-5 pt-0 mt-lg-5 pt-lg-5" :style="{ color: textColor }" id="link_bottom">
             <div class="container overflow-hidden">
-                <div class="row">
+                <div class="row mt-5">
                     <div data-aos="fade-right" class="col-12 col-lg-6">
                         <img src="../../assets/imageaboutus/shutterstock_407505481.png" alt="" class="w-100">
                     </div>
@@ -236,14 +237,6 @@ export default {
             if (imageName) {
                 return require(`../../assets/imagedatabase/${imageName}`);
             }
-        },
-        signIn() {
-            const container = document.getElementById("container");
-            container.classList.remove("right-panel-active");
-        },
-        signUp() {
-            const container = document.getElementById("container");
-            container.classList.add("right-panel-active");
         },
         hideDivWhite1() {
             this.divWhiteDisplay1 = 'none';

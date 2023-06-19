@@ -26,13 +26,13 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="../../assets/imagemain/image_main_one.png" class="d-block w-100 image_margin" alt="error">
+                        <img src="../../assets/imagemain/image_main_tow.png" class="d-block w-100 image_margin" alt="error">
                     </div>
                     <div class="carousel-item">
                         <img src="../../assets/imagemain/Group34875.png" class="d-block w-100 image_margin" alt="error">
                     </div>
                     <div class="carousel-item">
-                        <img src="../../assets/imagemain/image_main_tow.png" class="d-block w-100 image_margin" alt="error">
+                        <img src="../../assets/imagemain/image_three.png" class="d-block w-100 image_margin" alt="error">
                     </div>
                 </div>
                 <button class="carousel-control-prev me-5 pe-5" type="button" data-bs-target="#carouselExampleIndicators"

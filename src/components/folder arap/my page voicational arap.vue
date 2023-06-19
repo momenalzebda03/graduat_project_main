@@ -32,7 +32,7 @@
                             <i class="fas fa-times fs-2" @click="hideDivWhite1"></i>
                         </div>
                         <div class="text-center container">
-                            <h4 class="text-success">Link completed successfully</h4>
+                            <h4 class="text-success">تم الربط بنجاح</h4>
                             <img src="../../assets/verificationimage/imagetrue.png" class="py-5 w-75" alt="">
                         </div>
                     </div>

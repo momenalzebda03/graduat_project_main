@@ -11,8 +11,8 @@
                         <div>
                             <img :src="getImagePath(api_user1.Customer_Image)" class="image_header" alt="">
                             <br>
-                            <textarea class="mt-3 pt-2 ps-2 rounded-3 my_texteara" placeholder="Sent Message..." cols="60"
-                                rows="7"></textarea>
+                            <textarea v-model="text_message" class="mt-3 pt-2 ps-2 rounded-3 my_texteara"
+                                placeholder="Sent Message..." cols="60" rows="7"></textarea>
                         </div>
                     </div>
                     <div class="text-center">
@@ -27,19 +27,36 @@
                             <p class="mt-4">{{ my_api.Name_Vocational }}</p>
                             <img :src="getImagePath(my_api.Vocational_Image)" class="image_header" alt="">
                             <br>
-                            <textarea class="mt-3 pt-2 ps-2 rounded-3 my_texteara" cols="60" rows="7"
-                                readonly>Sent Message...</textarea>
+                            <textarea :value="my_api.communication_vocational" class="mt-3 pt-2 ps-2 rounded-3 my_texteara"
+                                cols="60" rows="7" readonly>Sent Message...</textarea>
                             <br>
-                            <button type="button" :style="{ backgroundColor: buttonColor }"
-                                class="button_color text-white border-0 btn rounded-5 px-5 bg-success mt-3">Reply</button>
-                            <button type="button"
-                                class="text-white border-0 btn rounded-5 ms-3 px-5 button_red bg-danger mt-3">delete</button>
+                            <a :href="getLink(my_api.id)">
+                                <button type="submit" :style="{ backgroundColor: buttonColor }"
+                                    class="button_color text-white border-0 btn rounded-5 px-5 bg-success mt-3">Reply</button>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
         <!-- end main -->
+        <!-- start completed 1 -->
+        <section :style="{ display: divWhiteDisplay1 }">
+            <div class="d-flex justify-content-center">
+                <div class="div_white shadow-lg p-3 mb-5 bg-body position-fixed">
+                    <div class="text-end pe-3">
+                        <div id="icon_close1">
+                            <i class="fas fa-times fs-2" @click="hideDivWhite1"></i>
+                        </div>
+                        <div class="text-center container">
+                            <h4 class="text-success">Message has been sent</h4>
+                            <img src="../../assets/verificationimage/imagetrue.png" class="py-5 w-75" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- end completed 1 -->
     </div>
 </template>
 
@@ -58,14 +75,20 @@ export default {
     },
     data() {
         return {
+            divWhiteDisplay1: 'none',
             api_user: {},
-            api_user1: {}
+            api_user1: {},
+            text_message: ""
         };
     },
     created() {
         this.changePageTitle('COUNSELING VOICATIONAL');
     },
     mounted() {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('invalidCredentials') === 'true') {
+            this.divWhiteDisplay1 = 'block';
+        }
         const id = this.$route.params.id;
         axios
             .get(`http://localhost/graduatproject-main/src/components/folder%20english/page%20select%20links%20join.php/?id=${id}`)
@@ -79,18 +102,17 @@ export default {
             });
     },
     methods: {
+        hideDivWhite1() {
+            this.divWhiteDisplay1 = 'none';
+        },
+        getLink(my_id) {
+            const encodedTextMessage = encodeURIComponent(this.text_message);
+            return `http://localhost/graduatproject-main/src/components/folder%20english/update%20counsling%20client.php?id=${this.$route.params.id}_${my_id}&text_message=${encodedTextMessage}`;
+        },
         getImagePath(imageName) {
             if (imageName) {
                 return require(`../../assets/imagedatabase/${imageName}`);
             }
-        },
-        signIn() {
-            const container = document.getElementById("container");
-            container.classList.remove("right-panel-active");
-        },
-        signUp() {
-            const container = document.getElementById("container");
-            container.classList.add("right-panel-active");
         },
         changePageTitle(newTitle) {
             document.title = newTitle;

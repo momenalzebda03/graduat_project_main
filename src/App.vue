@@ -58,7 +58,7 @@
     <div class="div_hit" :style="{ display: if_header_english_home ? 'block' : 'none' }">
       <nav class="navbar navbar-expand-lg navbar-light border-bottom position-fixed w-100 my_top"
         :style="{ backgroundColor: navBackground }" id="navbar-example2">
-        <div class="container">
+        <div class="container d-flex justify-content-center text-center gap-3">
           <img src="../src/assets/imageheader/Capture.png" class="image_header" alt="">
           <button class="navbar-toggler rounded-3 button_color" :style="{ backgroundColor: buttonColor }" type="button"
             data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -127,7 +127,7 @@
     <div class="div_hit">
       <nav class="navbar navbar-expand-lg navbar-light border-bottom position-fixed w-100 my_top"
         :style="{ backgroundColor: navBackground }">
-        <div class="container">
+        <div class="container text-center d-flex justify-content-center gap-3">
           <img src="../src/assets/imageheader/Capture.png" class="image_header" alt="">
           <button class="navbar-toggler rounded-3 button_color" :style="{ backgroundColor: buttonColor }" type="button"
             data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -172,7 +172,7 @@
     <div class="div_hit" :style="{ display: header_input_Client_english ? 'block' : 'none' }">
       <nav class="navbar navbar-expand-lg navbar-light border-bottom position-fixed w-100 my_top"
         :style="{ backgroundColor: navBackground }">
-        <div class="container">
+        <div class="container text-center d-flex justify-content-center gap-3">
           <img src="../src/assets/imageheader/Capture.png" class="image_header" alt="">
           <button class="navbar-toggler rounded-3 button_color" :style="{ backgroundColor: buttonColor }" type="button"
             data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -334,12 +334,12 @@
     <div class="div_hit div_hit1" :style="{ display: page_read_more_english ? 'block' : 'none' }">
       <nav class="navbar navbar-expand-lg navbar-light border-bottom position-fixed w-100 my_top"
         :style="{ backgroundColor: navBackground }">
-        <div class="container">
+        <div class="container text-center d-flex justify-content-center gap-3">
           <img src="../src/assets/imageheader/Capture.png" class="image_header" alt="">
-          <button class="navbar-toggler rounded-3x" type="button" :style="{ backgroundColor: buttonColor }"
+          <button class="navbar-toggler rounded-3 button_color" :style="{ backgroundColor: buttonColor }" type="button"
             data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <i class="fas fa-bars text-white fs-2 p-1"></i>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto d-flex gap-2 text-center gap-lg-4 mb-2 mb-lg-0 rounded-3 div_media">
@@ -378,7 +378,7 @@
     <div class="div_hit" :style="{ display: page_counseling_voicational_english ? 'block' : 'none' }">
       <nav class="navbar navbar-expand-lg navbar-light border-bottom position-fixed w-100 my_top"
         :style="{ backgroundColor: navBackground }">
-        <div class="container">
+        <div class="container text-center d-flex justify-content-center gap-3">
           <img src="../src/assets/imageheader/Capture.png" class="image_header" alt="">
           <button class="navbar-toggler rounded-3 button_color" :style="{ backgroundColor: buttonColor }" type="button"
             data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -483,7 +483,7 @@
     <div class="div_hit" :style="{ display: page_counseling_voicational_arap ? 'block' : 'none' }">
       <nav class="navbar navbar-expand-lg navbar-light border-bottom position-fixed w-100 my_top"
         :style="{ backgroundColor: navBackground }">
-        <div class="container">
+        <div class="container text-center d-flex justify-content-center gap-3">
           <img src="../src/assets/imageheader/Capture.png" class="image_header" alt="">
           <button class="navbar-toggler rounded-3 button_color" :style="{ backgroundColor: buttonColor }" type="button"
             data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -537,7 +537,7 @@
     <div class="div_hit" :style="{ display: page_counseling_client_english ? 'block' : 'none' }">
       <nav class="navbar navbar-expand-lg navbar-light border-bottom position-fixed w-100 my_top"
         :style="{ backgroundColor: navBackground }">
-        <div class="container">
+        <div class="container text-center d-flex justify-content-center gap-3">
           <img src="../src/assets/imageheader/Capture.png" class="image_header" alt="">
           <button class="navbar-toggler rounded-3 button_color" :style="{ backgroundColor: buttonColor }" type="button"
             data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -646,12 +646,12 @@
     <div class="div_hit div_hit1" :style="{ display: page_read_more_arap ? 'block' : 'none' }">
       <nav class="navbar navbar-expand-lg navbar-light border-bottom position-fixed w-100 my_top"
         :style="{ backgroundColor: navBackground }">
-        <div class="container">
+        <div class="container text-center d-flex justify-content-center gap-3">
           <img src="../src/assets/imageheader/Capture.png" class="image_header" alt="">
-          <button class="navbar-toggler rounded-3x" type="button" :style="{ backgroundColor: buttonColor }"
+          <button class="navbar-toggler rounded-3 button_color" :style="{ backgroundColor: buttonColor }" type="button"
             data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <i class="fas fa-bars text-white fs-2 p-1"></i>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto d-flex gap-2 text-center gap-lg-4 mb-2 mb-lg-0 rounded-3 div_media">
@@ -689,9 +689,9 @@
     <div class="div_hit" :style="{ display: header_input_Client_arap ? 'block' : 'none' }">
       <nav class="navbar navbar-expand-lg navbar-light border-bottom position-fixed w-100 my_top"
         :style="{ backgroundColor: navBackground }">
-        <div class="container">
+        <div class="container text-center d-flex justify-content-center gap-3">
           <img src="../src/assets/imageheader/Capture.png" class="image_header" alt="">
-          <button class="navbar-toggler rounded-3 button_color" type="button" :style="{ backgroundColor: buttonColor }"
+          <button class="navbar-toggler rounded-3 button_color" :style="{ backgroundColor: buttonColor }" type="button"
             data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars text-white fs-2 p-1"></i>
@@ -735,9 +735,9 @@
     <div class="div_hit">
       <nav class="navbar navbar-expand-lg navbar-light border-bottom position-fixed w-100 my_top"
         :style="{ backgroundColor: navBackground }">
-        <div class="container">
+        <div class="container text-center d-flex justify-content-center gap-3">
           <img src="../src/assets/imageheader/Capture.png" class="image_header" alt="">
-          <button class="navbar-toggler rounded-3 button_color" type="button" :style="{ backgroundColor: buttonColor }"
+          <button class="navbar-toggler rounded-3 button_color" :style="{ backgroundColor: buttonColor }" type="button"
             data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
             aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars text-white fs-2 p-1"></i>
@@ -781,7 +781,7 @@
     <div class="div_hit" :style="{ display: else_header_arap_home ? 'block' : 'none' }">
       <nav class="navbar navbar-expand-lg navbar-light border-bottom position-fixed w-100 my_top"
         :style="{ backgroundColor: navBackground }" id="navbar-example-arap">
-        <div class="container">
+        <div class="container text-center d-flex justify-content-center gap-3">
           <img src="../src/assets/imageheader/Capture.png" class="image_header" alt="">
           <button class="navbar-toggler rounded-3 button_color" :style="{ backgroundColor: buttonColor }"
             @click="changeButtonColor" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -848,7 +848,7 @@
     <div class="div_hit" :style="{ display: header_page_voctional_arap ? 'block' : 'none' }">
       <nav class="navbar navbar-expand-lg navbar-light border-bottom position-fixed w-100 my_top"
         :style="{ backgroundColor: navBackground }">
-        <div class="container d-flex justify-content-center text-center">
+        <div class="container d-flex justify-content-center text-center gap-3">
           <img src="../src/assets/imageheader/Capture.png" class="image_header" alt="">
           <button class="navbar-toggler rounded-3 button_color" type="button" :style="{ backgroundColor: buttonColor }"
             data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -908,7 +908,7 @@
     <div class="div_hit" :style="{ display: page_client_arap ? 'block' : 'none' }">
       <nav class="navbar navbar-expand-lg navbar-light border-bottom position-fixed w-100 my_top"
         :style="{ backgroundColor: navBackground }">
-        <div class="container d-flex justify-content-center text-center">
+        <div class="container d-flex justify-content-center text-center gap-3">
           <img src="../src/assets/imageheader/Capture.png" class="image_header" alt="">
           <button class="navbar-toggler rounded-3 button_color" type="button" :style="{ backgroundColor: buttonColor }"
             data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
