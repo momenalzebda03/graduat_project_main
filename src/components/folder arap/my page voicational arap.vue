@@ -3,8 +3,8 @@
         <!-- start completed 1 -->
         <section class="mt-0 mt-lg-4 pb-5 container overflow-hidden" :style="{ color: textColor }">
             <div class="row">
-                <div data-aos="fade-right" class="col-12 col-lg-6 d-flex justify-content-center mt-3 mt-lg-0">
-                    <img :src="getImagePath(api_user.Vocational_Image)" alt="" class="w-100 rounded-4">
+                <div data-aos="fade-left" class="col-12 col-lg-6 d-flex justify-content-center pt-0 mt-3 mt-md-5 pt-md-5">
+                    <img :src="getImagePath(api_user.Vocational_Image)" alt="" class="rounded-4 w-50 h-100">
                 </div>
                 <div data-aos="fade-left" class="col-12 col-lg-6 d-flex align-items-center justify-content-end">
                     <div class="mt-5 pt-5 text-center text-lg-end">

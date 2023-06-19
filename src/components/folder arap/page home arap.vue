@@ -15,7 +15,7 @@
                                 <img src="../../assets/imagemain/Capture.png" class="w-100" alt="...">
                             </div>
                         </div>
-                        <div class="col-12 col-lg-6 mt-0 mt-lg-5" data-aos="fade-left">
+                        <div class="col-12 col-lg-6 mt-5" data-aos="fade-left">
                             <div class="text-center text-lg-end text_black" :style="{ color: textColor }">
                                 <h1 class="fw-bold">اجعل عملك أسهل<br>مع حياتك المهنية<br>مشروع</h1>
                                 <p class="mt-4 text-secondary">سهولة ومرونة استخدام<br>موقع الويب الخاص بنا و سهولة رؤية

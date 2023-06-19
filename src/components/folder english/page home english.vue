@@ -6,7 +6,7 @@
             <section class="p-0 my-3 pt-lg-5" id="scrollspyHeading1">
                 <div class="container">
                     <div class="row">
-                        <div class="col-12 col-lg-6 mt-0 mt-lg-5" data-aos="fade-right">
+                        <div class="col-12 col-lg-6 mt-5" data-aos="fade-right">
                             <div class="text-center text-lg-start" :style="{ color: textColor }">
                                 <h1 class="fw-bold">make your job easier<br>with your career<br>project.</h1>
                                 <p class="mt-4 text-secondary">The ease and flexibility of using our<br> website and the
