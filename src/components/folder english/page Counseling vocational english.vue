@@ -10,6 +10,9 @@
                         <p class="mt-4">{{ api_user1.Name_Vocational }}</p>
                         <div>
                             <img :src="getImagePath(api_user1.Vocational_Image)" class="image_header mt-3" alt="">
+                            <div class="d-flex justify-content-center">
+                                <div class="div_before_image"></div>
+                            </div>
                             <br>
                             <textarea v-model="text_message" class="mt-3 pt-2 ps-2 rounded-3 my_texteara"
                                 placeholder="Sent Message..." cols="60" rows="7"></textarea>
@@ -20,10 +23,13 @@
                         <h5>Customers</h5>
                         <div v-for="my_api in api_user" :key="my_api.Customer_Id">
                             <p class="mt-4">{{ my_api.Customer_Name }}</p>
-                            <img :src="getImagePath(my_api.Customer_Image)" class="image_header my-2" alt="">
+                            <img :src="getImagePath(my_api.Customer_Image)" class="image_header mt-2" alt="">
+                            <div class="d-flex justify-content-center">
+                                <div class="div_before_image"></div>
+                            </div>
                             <br>
-                            <textarea :value="my_api.communication_customer" class="mt-3 pt-2 ps-2 rounded-3 my_texteara" cols="60" rows="7"
-                                readonly>Sent Message...</textarea>
+                            <textarea :value="my_api.communication_customer" class="mt-3 pt-2 ps-2 rounded-3 my_texteara"
+                                cols="60" rows="7" readonly>Sent Message...</textarea>
                             <br>
                             <a :href="getLink(my_api.Customer_Id)">
                                 <button type="submit" :style="{ backgroundColor: buttonColor }"

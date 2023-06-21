@@ -10,6 +10,9 @@
                         <p class="mt-4">{{ api_user1.Name_Vocational }}</p>
                         <div>
                             <img :src="getImagePath(api_user1.Vocational_Image)" class="image_header" alt="">
+                            <div class="d-flex justify-content-center">
+                                <div class="div_before_image"></div>
+                            </div>
                             <br>
                             <textarea v-model="text_message" class="mt-3 pt-2 pe-2 rounded-3 text-end my_texteara"
                                 placeholder="ارسال رسالة" cols="60" rows="7"></textarea>
@@ -21,6 +24,9 @@
                         <div v-for="my_api in api_user" :key="my_api.Customer_Id">
                             <p class="mt-4">{{ my_api.Customer_Name }}</p>
                             <img :src="getImagePath(my_api.Customer_Image)" class="image_header" alt="">
+                            <div class="d-flex justify-content-center">
+                                <div class="div_before_image"></div>
+                            </div>
                             <br>
                             <textarea :value="my_api.communication_customer"
                                 class="mt-3 pt-2 pe-2 rounded-3 text-end my_texteara text-black" cols="60" rows="7"
