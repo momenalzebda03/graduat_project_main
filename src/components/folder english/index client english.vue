@@ -13,34 +13,33 @@
                     </div>
                 </div>
             </div>
-            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
-                        aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
-                </div>
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="../../assets/imagemain/image_main_tow.png" class="d-block w-100 image_margin" alt="error">
+                        <img loading="lazy" src="../../assets/imagemain/image_main_tow.png"
+                            class="d-block w-100 image_margin" alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="../../assets/imagemain/Group34875.png" class="d-block w-100 image_margin" alt="error">
+                        <img loading="lazy" src="../../assets/imagemain/Group34875.png" class="d-block w-100 image_margin"
+                            alt="...">
                     </div>
                     <div class="carousel-item">
-                        <img src="../../assets/imagemain/image_three.png" class="d-block w-100 image_margin" alt="error">
+                        <img loading="lazy" src="../../assets/imagemain/image_three.png" class="d-block w-100 image_margin"
+                            alt="...">
                     </div>
                 </div>
-                <button class="carousel-control-prev me-5 pe-5" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                </button>
-                <button class="carousel-control-next ms-5 ps-5" type="button" data-bs-target="#carouselExampleIndicators"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                </button>
+                <div class="carousel-control-prev my_none" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    <div class="position-absolute start-0">
+                        <i data-bs-target="#carouselExampleControls" data-bs-slide="prev"
+                            class="fas fa-chevron-left fs-4 icon_black text-white px-4"></i>
+                    </div>
+                </div>
+                <div class="carousel-control-next my_none" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    <div class="position-absolute end-0">
+                        <i data-bs-target="#carouselExampleControls" data-bs-slide="next"
+                            class="fas fa-chevron-right fs-4 icon_black text-white px-4"></i>
+                    </div>
+                </div>
             </div>
         </section>
         <!-- start section my -->
@@ -73,6 +72,12 @@
                                 <td>Status</td>
                             </tr>
                         </thead>
+                        <div class="d-flex justify-content-end position-relative pt-3 container div_dad">
+                            <i class="fa fa-search icon_search ms-3 position-absolute top-50 start-0 text-muted"></i>
+                            <input type="input" class="form__field w-100" name="name" id='name' />
+                            <label for="name"
+                                class="form__label text-secondary position-absolute d-block text-nowrap">search</label>
+                        </div>
                         <tbody :style="{ color: textColor }">
                             <tr v-for="api in api_user1" :key="api.id">
                                 <td>{{ api.Name_Vocational }}</td>
@@ -104,7 +109,8 @@
                                 <td>Name</td>
                                 <td>Function</td>
                                 <td>image</td>
-                                <td>Status</td>
+                                <td>communication</td>
+                                <td>delete</td>
                             </tr>
                         </thead>
                         <tbody v-for="my_api in api_user2" :key="my_api.Name_Vocational" :style="{ color: textColor }">
@@ -121,32 +127,6 @@
                                             To Reject
                                         </button>
                                     </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-        <section class="mt-5">
-            <h3 class="text-center mb-4" data-aos="flip-right" :style="{ color: textColor }">Associated Professionals</h3>
-            <div data-aos="fade-down" class="projects p-20 rad-10 m-20 container">
-                <div class="responsive-table">
-                    <table class="fs-5 w-100 text-center">
-                        <thead>
-                            <tr>
-                                <td>Name</td>
-                                <td>Function</td>
-                                <td>image</td>
-                                <td>Status</td>
-                            </tr>
-                        </thead>
-                        <tbody v-for="my_api in api_user2" :key="my_api.Name_Vocational" :style="{ color: textColor }">
-                            <tr>
-                                <td>{{ my_api.Name_Vocational }}</td>
-                                <td>{{ my_api.Vocational_Job_Description }}</td>
-                                <td>
-                                    <img :src="getImagePath(my_api.Vocational_Image)" alt="" class="rounded-circle">
                                 </td>
                                 <td>
                                     <router-link :to="`/page_Counseling_client_english/${this.$route.query.id}`">

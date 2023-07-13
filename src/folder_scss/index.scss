@@ -130,6 +130,18 @@ body {
     z-index: -1;
 }
 
+.icon_black {
+    z-index: 1;
+    background-color: $color_black;
+    height: 170px;
+    padding-top: 70px;
+}
+
+.icon_black:hover {
+    cursor: pointer;
+    background-color: $color_blue;
+}
+
 // end general
 
 // start page 
@@ -754,6 +766,41 @@ body .section_color .container .row div div .icon_color {
 }
 
 // end about us
+// start table
+.icon_search {
+    transform: translateY(-40%);
+}
+
+.form__field:focus {
+    ~.form__label {
+        transition: 0.2s;
+        font-size: 0.7rem;
+    }
+}
+
+.form__field {
+    border: 0 !important;
+    border-bottom: 2px solid #333 !important;
+    outline: 0;
+    transition: border-color 0.2s;
+}
+
+.form__label {
+    top: 9px;
+    transition: 0.2s;
+}
+
+body section div .responsive-table table .div_dad {
+    margin-left: 40% !important;
+    width: 150% !important;
+}
+
+body section div .responsive-table table .div_dad1 {
+    margin-left: 58% !important;
+    width: 210% !important;
+}
+
+// end table
 // start work
 body section .row div .div_image {
     height: 206% !important;
@@ -897,6 +944,7 @@ body section .my_image {
 }
 
 // end footer
+
 // start media
 @media (max-width: 990px) and (min-width: 0px) {
     body section .div_body .loading-container {
@@ -909,7 +957,7 @@ body section .my_image {
 
     .my_none,
     section .container .row .div_none {
-        display: none;
+        display: none !important;
     }
 
     body .section_margin {
