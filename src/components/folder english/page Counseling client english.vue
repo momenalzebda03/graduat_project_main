@@ -32,9 +32,13 @@
                             <div class="d-flex justify-content-center">
                                 <div class="div_before_image"></div>
                             </div>
+                            <div v-for="my_message in messages" :key="my_message.message">
+                                <p>{{ my_message.message }}</p>
+                            </div>
                             <br>
-                            <textarea :value="my_api.communication_vocational" class="mt-3 pt-2 ps-2 rounded-3 my_texteara"
-                                cols="60" rows="7" readonly>Sent Message...</textarea>
+                            <!-- <textarea v-for="my_link in api_link" :key="my_link.message_vocationa"
+                                class="mt-3 pt-2 ps-2 rounded-3 my_textarea" cols="60" rows="7" readonly
+                                :value="my_link.message_vocationa"></textarea> -->
                             <br>
                             <a :href="getLink(my_api.id)">
                                 <button type="submit" :style="{ backgroundColor: buttonColor }"
@@ -69,6 +73,7 @@
 <script>
 import "../../App.vue";
 import axios from 'axios';
+
 export default {
     name: "ComponentHome",
     computed: {
@@ -84,6 +89,7 @@ export default {
             divWhiteDisplay1: 'none',
             api_user: {},
             api_user1: {},
+            messages: {},
             text_message: ""
         };
     },
@@ -113,7 +119,7 @@ export default {
         },
         getLink(my_id) {
             const encodedTextMessage = encodeURIComponent(this.text_message);
-            return `http://localhost/graduatproject-main/src/components/folder%20english/update%20counsling%20client.php?id=${this.$route.params.id}_${my_id}&text_message=${encodedTextMessage}`;
+            return `http://localhost/graduatproject-main/src/components/folder%20english/insert%20counsling%20client.php?id=${this.$route.params.id}_${my_id}&text_message=${encodedTextMessage}`;
         },
         getImagePath(imageName) {
             if (imageName) {

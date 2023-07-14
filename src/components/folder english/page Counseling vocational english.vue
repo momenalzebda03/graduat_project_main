@@ -28,8 +28,9 @@
                                 <div class="div_before_image"></div>
                             </div>
                             <br>
-                            <textarea :value="my_api.communication_customer" class="mt-3 pt-2 ps-2 rounded-3 my_texteara"
-                                cols="60" rows="7" readonly>Sent Message...</textarea>
+                            <!-- <div v-for="api_links in api_link" :key="api_links.message">
+                                <p>{{ api_links.message }}</p>
+                            </div> -->
                             <br>
                             <a :href="getLink(my_api.Customer_Id)">
                                 <button type="submit" :style="{ backgroundColor: buttonColor }"
@@ -75,13 +76,14 @@ export default {
         },
     },
     created() {
-        this.changePageTitle('COUNSELING CLIENTS');
+        this.changePageTitle('COUNSELING VOCATIONAL');
     },
     data() {
         return {
             divWhiteDisplay1: 'none',
             api_user: {},
             api_user1: {},
+            api_link: {},
             text_message: ""
         };
     },
@@ -100,7 +102,7 @@ export default {
             .get(`http://localhost/graduatproject-main/src/components/folder%20english/select%20page%20voicational%20english.php/?id=${id}`)
             .then((response) => {
                 this.api_user1 = response.data;
-            });
+            });            
     },
     methods: {
         hideDivWhite1() {

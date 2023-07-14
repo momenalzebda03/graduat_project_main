@@ -393,8 +393,9 @@
                   :class="{ 'active1': $route.path === '/home_english' }">home</router-link>
               </li>
               <li class="nav-item mt-1">
-                <router-link :to="{ path: '/page_counseling_voiactional_english/' + $route.params.id }"
-                  class="text-decoration-none link_color text_black" :style="{ color: textColor }"
+                <router-link
+                  :to="{ path: '/page_counseling_voiactional_english/' + $route.params.id }"
+                  class="text-decoration-none link_color active text_black" :style="{ color: textColor }"
                   aria-current="page">Counseling</router-link>
               </li>
               <li class=" nav-item mt-1">

@@ -10,26 +10,15 @@ $checkStatement1->bindParam(':number1', $number1);
 $checkStatement1->bindParam(':number2', $number2);
 $checkStatement1->execute();
 $existingCount1 = $checkStatement1->rowCount();
-$checkQuery2 = "SELECT * FROM `table_message` WHERE `id_vocational` = :number1 AND `id_customer` = :number2";
-$checkStatement2 = $data->prepare($checkQuery2);
-$checkStatement2->bindParam(':number1', $number1);
-$checkStatement2->bindParam(':number2', $number2);
-$checkStatement2->execute();
 
-$existingCount2 = $checkStatement2->rowCount();
-
-if ($existingCount1 > 0 || $existingCount2 > 0) {
+if ($existingCount1 > 0) {
     echo "The combination of number_vocational and number_customer already exists. Insertion is disabled.";
 } else {
     $insertQuery1 = "INSERT INTO `link`(`number_vocational`, `number_customer`) VALUES ( :number1, :number2)";
     $insertStatement1 = $data->prepare($insertQuery1);
     $insertStatement1->bindParam(':number1', $number1);
     $insertStatement1->bindParam(':number2', $number2);
-    $insertQuery2 = "INSERT INTO `table_message`(`id_vocational`, `id_customer`) VALUES (:number1, :number2)";
-    $insertStatement2 = $data->prepare($insertQuery2);
-    $insertStatement2->bindParam(':number1', $number1);
-    $insertStatement2->bindParam(':number2', $number2);
-    if ($insertStatement1->execute() && $insertStatement2->execute()) {
+    if ($insertStatement1->execute()) {
         $url_english = "http://localhost:8080/my_page_voictional_english/$number1?id=$number2&mytrue=true";
         header("Location: " . $url_english);
     } else {
