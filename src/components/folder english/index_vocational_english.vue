@@ -60,6 +60,14 @@
     <!-- start table -->
     <section class="mt-5">
         <h3 class="text-center mb-4" data-aos="flip-right" :style="{ color: textColor }">clients</h3>
+        <div class="container my-5">
+            <div class="d-flex justify-content-end position-relative pt-3 container">
+                <i class="fa fa-search icon_search ms-3 position-absolute top-50 start-0 text-muted"></i>
+                <input type="input" class="form__field w-100" name="name" id='name' v-model="search_model" />
+                <label for="name" class="form__label text-secondary position-absolute d-block text-nowrap">search
+                    name</label>
+            </div>
+        </div>
         <div data-aos="fade-down" class="projects p-20 rad-10 m-20 container">
             <div class="responsive-table">
                 <table class="fs-5 w-100 text-center">
@@ -71,14 +79,8 @@
                             <td>Status</td>
                         </tr>
                     </thead>
-                    <div class="d-flex justify-content-end position-relative pt-3 container div_dad mx-4">
-                        <i class="fa fa-search icon_search ms-3 position-absolute top-50 start-0 text-muted"></i>
-                        <input type="input" class="form__field w-100" name="name" id='name' v-model="search_model" />
-                        <label for="name" class="form__label text-secondary position-absolute d-block text-nowrap">search
-                            name</label>
-                    </div>
                     <tbody :style="{ color: textColor }">
-                        <tr v-for="api in  api_user1 " :key="api.id">
+                        <tr v-for="api in  filteredResults " :key="api.id">
                             <td>{{ api.Customer_Name }}</td>
                             <td>{{ api.Customer_Required_profession }}</td>
                             <td>
@@ -111,13 +113,7 @@
                             <td>delete</td>
                         </tr>
                     </thead>
-                    <div class="d-flex justify-content-end position-relative pt-3 container div_dad1 mx-4">
-                        <i class="fa fa-search icon_search ms-3 position-absolute top-50 start-0 text-muted"></i>
-                        <input type="input" class="form__field w-100" name="name" id='name' />
-                        <label for="name" class="form__label text-secondary position-absolute d-block text-nowrap">search
-                            name</label>
-                    </div>
-                    <tbody v-for="my_api in api_user2" :key="my_api.Customer_Name" :style="{ color: textColor }">
+                    <tbody v-for="my_api in filteredResultslink" :key="my_api.Customer_Name" :style="{ color: textColor }">
                         <tr>
                             <td>{{ my_api.Customer_Name }}</td>
                             <td>{{ my_api.Customer_Required_profession }}</td>
@@ -136,8 +132,7 @@
                                 <router-link :to="`/page_counseling_voiactional_english/${this.$route.query.id}`">
                                     <button type="button" :style="{ backgroundColor: buttonColor }"
                                         class="button_color text-white border-0 btn rounded-5 px-5 bg-success mt-3">
-                                        Advice
-                                        Or Work</button>
+                                        Advice Or Work</button>
                                 </router-link>
                             </td>
                         </tr>
@@ -200,6 +195,18 @@ import axios from 'axios';
 export default {
     name: "ComponentHome",
     computed: {
+        filteredResults() {
+            if (this.search_model) {
+                return this.api_user1.filter(api => api.Customer_Name.toLowerCase().includes(this.search_model.toLowerCase()));
+            }
+            return this.api_user1;
+        },
+        filteredResultslink() {
+            if (this.search_model) {
+                return this.api_user2.filter(api => api.Customer_Name.toLowerCase().includes(this.search_model.toLowerCase()));
+            }
+            return this.api_user2;
+        },
         textColor() {
             return this.$root.textColor;
         },
@@ -243,12 +250,6 @@ export default {
             .get(`http://localhost/graduatproject-main/src/components/folder%20english/page%20select%20client%20link%20join.php?id=${id}`)
             .then((response) => {
                 this.api_user2 = response.data;
-            })
-        axios
-            .get(`http://localhost/graduatproject-main/src/components/folder%20english/page%20seatch.php`)
-            .then(response => {
-                this.search_model = response.data;
-                console.log(this.search_model);
             })
     },
     methods: {

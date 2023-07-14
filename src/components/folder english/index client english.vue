@@ -61,6 +61,14 @@
         <!-- start table -->
         <section class="mt-5">
             <h3 class="text-center mb-4" data-aos="flip-right" :style="{ color: textColor }">Vocational</h3>
+            <div class="container my-5">
+                <div class="d-flex justify-content-end position-relative pt-3 container">
+                    <i class="fa fa-search icon_search ms-3 position-absolute top-50 start-0 text-muted"></i>
+                    <input type="input" class="form__field w-100" name="name" id='name' v-model="search_model" />
+                    <label for="name" class="form__label text-secondary position-absolute d-block text-nowrap">search
+                        name</label>
+                </div>
+            </div>
             <div data-aos="fade-down" class="projects p-20 rad-10 m-20 container">
                 <div class="responsive-table">
                     <table class="fs-5 w-100 text-center">
@@ -72,14 +80,8 @@
                                 <td>Status</td>
                             </tr>
                         </thead>
-                        <div class="d-flex justify-content-end position-relative pt-3 container div_dad">
-                            <i class="fa fa-search icon_search ms-3 position-absolute top-50 start-0 text-muted"></i>
-                            <input type="input" class="form__field w-100" name="name" id='name' />
-                            <label for="name"
-                                class="form__label text-secondary position-absolute d-block text-nowrap">search</label>
-                        </div>
                         <tbody :style="{ color: textColor }">
-                            <tr v-for="api in api_user1" :key="api.id">
+                            <tr v-for="api in filteredResults" :key="api.id">
                                 <td>{{ api.Name_Vocational }}</td>
                                 <td>{{ api.Vocational_Job_Description }}</td>
                                 <td>
@@ -113,7 +115,7 @@
                                 <td>delete</td>
                             </tr>
                         </thead>
-                        <tbody v-for="my_api in api_user2" :key="my_api.Name_Vocational" :style="{ color: textColor }">
+                        <tbody v-for="my_api in filteredResultslink" :key="my_api.Name_Vocational" :style="{ color: textColor }">
                             <tr>
                                 <td>{{ my_api.Name_Vocational }}</td>
                                 <td>{{ my_api.Vocational_Job_Description }}</td>
@@ -181,6 +183,18 @@ import axios from 'axios';
 export default {
     name: "ComponentHome",
     computed: {
+        filteredResults() {
+            if (this.search_model) {
+                return this.api_user1.filter(api => api.Name_Vocational.toLowerCase().includes(this.search_model.toLowerCase()));
+            }
+            return this.api_user1;
+        },
+        filteredResultslink() {
+            if (this.search_model) {
+                return this.api_user2.filter(api => api.Name_Vocational.toLowerCase().includes(this.search_model.toLowerCase()));
+            }
+            return this.api_user2;
+        },
         textColor() {
             return this.$root.textColor;
         },
@@ -193,6 +207,7 @@ export default {
     },
     data() {
         return {
+            search_model: '',
             api_user: {},
             api_user1: {},
             api_user2: {},

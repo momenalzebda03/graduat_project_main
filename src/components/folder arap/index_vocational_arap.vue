@@ -64,6 +64,14 @@
         <!-- start table -->
         <section class="mt-5">
             <h3 class="text-center mb-4" data-aos="flip-right" :style="{ color: textColor }">العملاء</h3>
+            <div class="container my-5">
+                <div class="d-flex justify-content-end position-relative pt-3 container">
+                    <i class="fa fa-search icon_search ms-3 position-absolute top-50 start-0 text-muted"></i>
+                    <input type="input" class="form__field w-100" name="name" id='name' v-model="search_model" />
+                    <label for="name" class="form__label text-secondary position-absolute d-block text-nowrap">البحث عن
+                        الاسم</label>
+                </div>
+            </div>
             <div data-aos="fade-down" class="projects p-20 rad-10 m-20 container">
                 <div class="responsive-table">
                     <table class="fs-5 w-100 text-center">
@@ -75,14 +83,8 @@
                                 <td>الزر</td>
                             </tr>
                         </thead>
-                        <div class="d-flex justify-content-end position-relative pt-3 container div_dad mx-4">
-                        <i class="fa fa-search icon_search ms-3 position-absolute top-50 start-0 text-muted"></i>
-                        <input type="input" class="form__field w-100" name="name" id='name' />
-                        <label for="name"
-                            class="form__label text-secondary position-absolute d-block text-nowrap">بحث</label>
-                    </div>
                         <tbody :style="{ color: textColor }">
-                            <tr v-for="api in  api_user1 " :key="api.id">
+                            <tr v-for="api in  filteredResults " :key="api.id">
                                 <td>{{ api.Customer_Name }}</td>
                                 <td>{{ api.Customer_Required_profession }}</td>
                                 <td>
@@ -115,13 +117,8 @@
                                 <td>حذف</td>
                             </tr>
                         </thead>
-                        <div class="d-flex justify-content-end position-relative pt-3 container div_dad1 mx-4">
-                            <i class="fa fa-search icon_search ms-3 position-absolute top-50 start-0 text-muted"></i>
-                            <input type="input" class="form__field w-100" name="name" id='name' />
-                            <label for="name"
-                                class="form__label text-secondary position-absolute d-block text-nowrap">البحث</label>
-                        </div>
-                        <tbody v-for="my_api in api_user2" :key="my_api.Customer_Name" :style="{ color: textColor }">
+                        <tbody v-for="my_api in filteredResultslink" :key="my_api.Customer_Name"
+                            :style="{ color: textColor }">
                             <tr>
                                 <td>{{ my_api.Customer_Name }}</td>
                                 <td>{{ my_api.Customer_Required_profession }}</td>
@@ -207,6 +204,18 @@ import axios from "axios";
 export default {
     name: "ComponentHome",
     computed: {
+        filteredResults() {
+            if (this.search_model) {
+                return this.api_user1.filter(api => api.Customer_Name.toLowerCase().includes(this.search_model.toLowerCase()));
+            }
+            return this.api_user1;
+        },
+        filteredResultslink() {
+            if (this.search_model) {
+                return this.api_user2.filter(api => api.Customer_Name.toLowerCase().includes(this.search_model.toLowerCase()));
+            }
+            return this.api_user2;
+        },
         textColor() {
             return this.$root.textColor;
         },
@@ -219,6 +228,7 @@ export default {
     },
     data() {
         return {
+            search_model: '',
             api_user: {},
             api_user1: {},
             api_user2: {},

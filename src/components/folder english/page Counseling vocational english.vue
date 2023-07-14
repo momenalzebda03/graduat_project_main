@@ -108,7 +108,7 @@ export default {
         },
         getLink(my_id) {
             const encodedTextMessage = encodeURIComponent(this.text_message);
-            return `http://localhost/graduatproject-main/src/components/folder%20english/update%20counseling%20vocational.php?id=${my_id}_${this.$route.params.id}&text_message=${encodedTextMessage}`;
+            return `http://localhost/graduatproject-main/src/components/folder%20english/insert%20counseling%20vocational.php?id=${my_id}_${this.$route.params.id}&text_message=${encodedTextMessage}`;
         },
         getImagePath(imageName) {
             if (imageName) {
