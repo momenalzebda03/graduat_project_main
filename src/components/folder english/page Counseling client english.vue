@@ -27,13 +27,11 @@
                         <h4>We Help And Solve Your Business Problem</h4>
                         <h5>Vocational</h5>
                         <div v-for="my_api in api_user" :key="my_api.Customer_Id">
+                            <h1>hi {{ select_vocaional(my_api.id) }}</h1>
                             <p class="mt-4">{{ my_api.Name_Vocational }}</p>
                             <img :src="getImagePath(my_api.Vocational_Image)" class="image_header" alt="">
                             <div class="d-flex justify-content-center">
                                 <div class="div_before_image"></div>
-                            </div>
-                            <div v-for="my_message in messages" :key="my_message.message">
-                                <p>{{ my_message.message }}</p>
                             </div>
                             <br>
                             <!-- <textarea v-for="my_link in api_link" :key="my_link.message_vocationa"
@@ -94,7 +92,7 @@ export default {
         };
     },
     created() {
-        this.changePageTitle('COUNSELING VOICATIONAL');
+        this.changePageTitle('COUNSELING CLIENT');
     },
     mounted() {
         const urlParams = new URLSearchParams(window.location.search);
@@ -116,6 +114,9 @@ export default {
     methods: {
         hideDivWhite1() {
             this.divWhiteDisplay1 = 'none';
+        },
+        select_vocaional(select_id) {
+            return `http://localhost/graduatproject-main/src/components/folder%20english/select%20message%20client.php?id=${this.$route.params.id}_${select_id}`;
         },
         getLink(my_id) {
             const encodedTextMessage = encodeURIComponent(this.text_message);

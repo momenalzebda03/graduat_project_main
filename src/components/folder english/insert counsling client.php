@@ -18,7 +18,8 @@ if ($existingCount > 0) {
     $insertStatement->bindParam(':number2', $number2);
     $insertStatement->bindParam(':message', $text_message);
     if ($insertStatement->execute()) {
-        $selectQuery = "SELECT `message` FROM `table_message` WHERE ifelse = 'V' AND `id_vocational` = :number2 AND id_customer = :number1";
+        $url_english = "http://localhost:8080/page_Counseling_client_english/$number2?&invalidCredentials=true";
+        header("Location: " . $url_english);
     } else {
         echo "Error inserting message.";
     }
