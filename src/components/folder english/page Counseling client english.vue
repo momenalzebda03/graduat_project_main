@@ -27,16 +27,18 @@
                         <h4>We Help And Solve Your Business Problem</h4>
                         <h5>Vocational</h5>
                         <div v-for="my_api in api_user" :key="my_api.Customer_Id">
-                            <h1>hi {{ select_vocaional(my_api.id) }}</h1>
+                            <p class="d-none">{{ message_vocaional(my_api.id) }}</p>
                             <p class="mt-4">{{ my_api.Name_Vocational }}</p>
                             <img :src="getImagePath(my_api.Vocational_Image)" class="image_header" alt="">
                             <div class="d-flex justify-content-center">
                                 <div class="div_before_image"></div>
                             </div>
                             <br>
-                            <!-- <textarea v-for="my_link in api_link" :key="my_link.message_vocationa"
-                                class="mt-3 pt-2 ps-2 rounded-3 my_textarea" cols="60" rows="7" readonly
-                                :value="my_link.message_vocationa"></textarea> -->
+                            <div v-for="select_message in getMessagesByApiUserId(my_api.id)" :key="select_message.id">
+                                <input type="text" :value="select_message.message" readonly>
+                                <br>
+                                <br>
+                            </div>
                             <br>
                             <a :href="getLink(my_api.id)">
                                 <button type="submit" :style="{ backgroundColor: buttonColor }"
@@ -88,6 +90,7 @@ export default {
             api_user: {},
             api_user1: {},
             messages: {},
+            messagesMap: new Map(),
             text_message: ""
         };
     },
@@ -95,6 +98,7 @@ export default {
         this.changePageTitle('COUNSELING CLIENT');
     },
     mounted() {
+        this.message_vocaional();
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('invalidCredentials') === 'true') {
             this.divWhiteDisplay1 = 'block';
@@ -115,8 +119,17 @@ export default {
         hideDivWhite1() {
             this.divWhiteDisplay1 = 'none';
         },
-        select_vocaional(select_id) {
-            return `http://localhost/graduatproject-main/src/components/folder%20english/select%20message%20client.php?id=${this.$route.params.id}_${select_id}`;
+        message_vocaional(select_id) {
+            if (!this.messagesMap.has(select_id)) {
+                axios.get(`http://localhost/graduatproject-main/src/components/folder%20english/select%20message%20client.php?id=${this.$route.params.id}_${select_id}`)
+                    .then(response => {
+                        this.messagesMap.set(select_id, response.data);
+                        console.log(this.messagesMap.get(select_id));
+                    })
+            }
+        },
+        getMessagesByApiUserId(apiUserId) {
+            return this.messagesMap.get(apiUserId) || [];
         },
         getLink(my_id) {
             const encodedTextMessage = encodeURIComponent(this.text_message);

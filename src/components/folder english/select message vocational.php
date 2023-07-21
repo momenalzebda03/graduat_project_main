@@ -4,7 +4,7 @@ $id = $_GET['id'];
 $before_and_after = explode('_', $id);
 $number1 = $before_and_after[1];
 $number2 = $before_and_after[0];
-$selectQuery = "SELECT `message` FROM `table_message` WHERE ifelse = 'V' AND `id_vocational` = :number1 AND id_customer = :number2";
+$selectQuery = "SELECT `message` FROM `table_message` WHERE ifelse = 'C' AND `id_vocational` = :number2 AND id_customer = :number1";
 $statement = $data->prepare($selectQuery);
 $statement->bindParam(':number1', $number1, PDO::PARAM_INT);
 $statement->bindParam(':number2', $number2, PDO::PARAM_INT);

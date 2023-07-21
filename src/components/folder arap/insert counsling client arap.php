@@ -12,13 +12,13 @@ $checkStatement->bindParam(':number2', $number2);
 $checkStatement->execute();
 $existingCount = $checkStatement->fetchColumn();
 if ($existingCount > 0) {
-    $insertQuery = "INSERT INTO `table_message`(`id_vocational`, `id_customer`, `message`, `ifelse`) VALUES (:number1, :number2, :message, 'V')";
+    $insertQuery = "INSERT INTO `table_message`(`id_vocational`, `id_customer`, `message`, `ifelse`) VALUES (:number1, :number2, :message, 'C')";
     $insertStatement = $data->prepare($insertQuery);
     $insertStatement->bindParam(':number1', $number1);
     $insertStatement->bindParam(':number2', $number2);
     $insertStatement->bindParam(':message', $text_message);
     if ($insertStatement->execute()) {
-        $url_english = "http://localhost:8080/page_counseling_voiactional_english/$number1?&invalidCredentials=true";
+        $url_english = "http://localhost:8080/page_Counseling_client_arap/$number2?&invalidCredentials=true";
         header("Location: " . $url_english);
     } else {
         echo "Error inserting message.";

@@ -18,7 +18,7 @@ if ($existingCount > 0) {
     $insertStatement->bindParam(':number2', $number2);
     $insertStatement->bindParam(':message', $text_message);
     if ($insertStatement->execute()) {
-        $url_english = "http://localhost:8080/page_counseling_voiactional_english/$number1?&invalidCredentials=true";
+        $url_english = "http://localhost:8080/page_counseling_voiactional_arap/$number1?&invalidCredentials=true";
         header("Location: " . $url_english);
     } else {
         echo "Error inserting message.";

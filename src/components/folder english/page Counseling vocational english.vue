@@ -22,15 +22,19 @@
                         <h4>We Help And Solve Your Business Problem</h4>
                         <h5>Customers</h5>
                         <div v-for="my_api in api_user" :key="my_api.Customer_Id">
+                            <p class="d-none">{{ message_client(my_api.Customer_Id) }}</p>
                             <p class="mt-4">{{ my_api.Customer_Name }}</p>
                             <img :src="getImagePath(my_api.Customer_Image)" class="image_header mt-2" alt="">
                             <div class="d-flex justify-content-center">
                                 <div class="div_before_image"></div>
                             </div>
                             <br>
-                            <!-- <div v-for="api_links in api_link" :key="api_links.message">
-                                <p>{{ api_links.message }}</p>
-                            </div> -->
+                            <div v-for="select_message in getMessagesByApiUserId(my_api.Customer_Id)"
+                                :key="select_message.Customer_Id">
+                                <input type="text" :value="select_message.message" readonly>
+                                <br>
+                                <br>
+                            </div>
                             <br>
                             <a :href="getLink(my_api.Customer_Id)">
                                 <button type="submit" :style="{ backgroundColor: buttonColor }"
@@ -83,11 +87,13 @@ export default {
             divWhiteDisplay1: 'none',
             api_user: {},
             api_user1: {},
-            api_link: {},
+            messages: {},
+            messagesMap: new Map(),
             text_message: ""
         };
     },
     mounted() {
+        this.message_client();
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('invalidCredentials') === 'true') {
             this.divWhiteDisplay1 = 'block';
@@ -102,7 +108,7 @@ export default {
             .get(`http://localhost/graduatproject-main/src/components/folder%20english/select%20page%20voicational%20english.php/?id=${id}`)
             .then((response) => {
                 this.api_user1 = response.data;
-            });            
+            });
     },
     methods: {
         hideDivWhite1() {
@@ -111,6 +117,18 @@ export default {
         getLink(my_id) {
             const encodedTextMessage = encodeURIComponent(this.text_message);
             return `http://localhost/graduatproject-main/src/components/folder%20english/insert%20counseling%20vocational.php?id=${my_id}_${this.$route.params.id}&text_message=${encodedTextMessage}`;
+        },
+        message_client(select_id) {
+            if (!this.messagesMap.has(select_id)) {
+                axios.get(`http://localhost/graduatproject-main/src/components/folder%20english/select%20message%20vocational.php?id=${this.$route.params.id}_${select_id}`)
+                    .then(response => {
+                        this.messagesMap.set(select_id, response.data);
+                        console.log(this.messagesMap.get(select_id));
+                    })
+            }
+        },
+        getMessagesByApiUserId(apiUserId) {
+            return this.messagesMap.get(apiUserId) || [];
         },
         getImagePath(imageName) {
             if (imageName) {

@@ -23,15 +23,18 @@
                         <h5>العميل</h5>
                         <div v-for="my_api in api_user" :key="my_api.Customer_Id">
                             <p class="mt-4">{{ my_api.Customer_Name }}</p>
+                            <p class="d-none">{{ message_client(my_api.Customer_Id) }}</p>
                             <img :src="getImagePath(my_api.Customer_Image)" class="image_header" alt="">
                             <div class="d-flex justify-content-center">
                                 <div class="div_before_image"></div>
                             </div>
                             <br>
-                            <textarea :value="my_api.communication_customer"
-                                class="mt-3 pt-2 pe-2 rounded-3 text-end my_texteara text-black" cols="60" rows="7"
-                                readonly>ارسل رسالة</textarea>
-                            <br>
+                            <div v-for="select_message in getMessagesByApiUserId(my_api.Customer_Id)"
+                                :key="select_message.Customer_Id">
+                                <input type="text" :value="select_message.message" readonly>
+                                <br>
+                                <br>
+                            </div>
                             <a :href="getLink(my_api.Customer_Id)">
                                 <button type="button" @:click="showDivWhite" :style="{ backgroundColor: buttonColor }"
                                     @click="changeButtonColor"
@@ -84,6 +87,8 @@ export default {
             divWhiteDisplay1: 'none',
             api_user: {},
             api_user1: {},
+            messages: {},
+            messagesMap: new Map(),
             text_message: ""
         };
     },
@@ -110,7 +115,19 @@ export default {
         },
         getLink(my_id) {
             const encodedTextMessage = encodeURIComponent(this.text_message);
-            return `http://localhost/graduatproject-main/src/components/folder%20arap/update%20counseling%20vocational%20arap.php?id=${my_id}_${this.$route.params.id}&text_message=${encodedTextMessage}`;
+            return `http://localhost/graduatproject-main/src/components/folder%20arap/insert%20counseling%20vocational%20arap.php?id=${my_id}_${this.$route.params.id}&text_message=${encodedTextMessage}`;
+        },
+        message_client(select_id) {
+            if (!this.messagesMap.has(select_id)) {
+                axios.get(`http://localhost/graduatproject-main/src/components/folder%20english/select%20message%20vocational.php?id=${this.$route.params.id}_${select_id}`)
+                    .then(response => {
+                        this.messagesMap.set(select_id, response.data);
+                        console.log(this.messagesMap.get(select_id));
+                    })
+            }
+        },
+        getMessagesByApiUserId(apiUserId) {
+            return this.messagesMap.get(apiUserId) || [];
         },
         getImagePath(imageName) {
             if (imageName) {

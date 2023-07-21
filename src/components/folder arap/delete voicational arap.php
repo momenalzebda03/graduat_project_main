@@ -15,7 +15,7 @@ if ($existingCount1 > 0 || $existingCount2 > 0) {
     $deleteStatement1 = $data->prepare($deleteQuery1);
     $deleteStatement1->bindParam(':number1', $number1);
     $deleteStatement1->bindParam(':number2', $number2);
-    if ($deleteStatement1->execute() && $deleteStatement2->execute()) {
+    if ($deleteStatement1->execute()) {
         $url_arap = "http://localhost:8080/index_vocational_arap?id=$number1&true_delete=true";
         header("Location: " . $url_arap);
     } else {

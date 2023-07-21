@@ -10,13 +10,12 @@ $checkStatement1->bindParam(':number1', $number1);
 $checkStatement1->bindParam(':number2', $number2);
 $checkStatement1->execute();
 $existingCount1 = $checkStatement1->rowCount();
-$existingCount2 = $checkStatement2->rowCount();
 if ($existingCount1 > 0) {
     $deleteQuery1 = "DELETE FROM `link` WHERE `number_vocational` = :number1 AND `number_customer` = :number2";
     $deleteStatement1 = $data->prepare($deleteQuery1);
     $deleteStatement1->bindParam(':number1', $number1);
     $deleteStatement1->bindParam(':number2', $number2);
-    if ($deleteStatement1->execute() && $deleteStatement2->execute()) {
+    if ($deleteStatement1->execute()) {
         $url_english = "http://localhost:8080/index_client_english?id=$number2&true_delete=true";
         header("Location: " . $url_english);
     } else {
