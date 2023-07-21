@@ -489,8 +489,9 @@ body section #container {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
         0 10px 10px rgba(0, 0, 0, 0.22);
     width: 800px;
+    margin-top: 4%;
     z-index: 0;
-    min-height: 1150px;
+    min-height: 650px;
 }
 
 body section .div_con_he {
@@ -504,8 +505,7 @@ body section .container .form-container {
 }
 
 body section .container .form-container .my_form {
-    padding: 0 50px;
-    height: 1150px;
+    padding: 50px;
 }
 
 body section .container .form-container .height_up {
@@ -520,6 +520,10 @@ body section .container .form-container .height_in {
 body section .container .form-container .my_form .my_input {
     background-color: #eee;
     padding: 10px 15px;
+}
+
+.my_input_1 {
+    padding: 13px 15px !important;
 }
 
 body section .container .sign-in-container {
@@ -989,7 +993,7 @@ body section .my_image {
     }
 
     body section .container .sign-in-container {
-        margin-top: 150px;
+        margin-top: 100px;
         color: rgb(58, 143, 44);
     }
 
@@ -1011,11 +1015,11 @@ body section .my_image {
 
     body section #container {
         width: 100%;
-        min-height: 1300px;
+        min-height: 850px;
     }
 
     body section .div_con_he {
-        min-height: 850px !important;
+        min-height: 1380px !important;
     }
 
     body div section div div form .input_file {

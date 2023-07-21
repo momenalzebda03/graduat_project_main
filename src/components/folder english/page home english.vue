@@ -508,7 +508,7 @@
                                 <h6 class="my-3">name</h6>
                                 <input type="text" name="Name" required class="w-100 py-2">
                                 <h6 class="my-3">Email</h6>
-                                <input type="text" name="Email" required class="w-100 py-2">
+                                <input type="email" name="Email" required class="w-100 py-2">
                                 <h6 class="my-3">Title Subject</h6>
                                 <input type="text" name="Title" required class="w-100 py-2">
                                 <h6 class="my-3">Massage</h6>

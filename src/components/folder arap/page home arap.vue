@@ -496,7 +496,7 @@
                                 <h6 class="my-3">الاسم</h6>
                                 <input type="text" name="Name" class="w-100 py-2">
                                 <h6 class="my-3">الايميل</h6>
-                                <input type="text" name="Email" class="w-100 py-2">
+                                <input type="email" name="Email" class="w-100 py-2">
                                 <h6 class="my-3">عنوان الرسالة</h6>
                                 <input type="text" name="Title" class="w-100 py-2">
                                 <h6 class="my-3">الرسالة</h6>
