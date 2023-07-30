@@ -634,6 +634,15 @@ body section .row div .div_overflow {
     margin-left: -10%;
 }
 
+body section .row div div .text_top {
+    margin-top: 80px;
+    width: 0%;
+    height: 0%;
+    resize: none;
+    transition: 1s;
+    z-index: -1;
+}
+
 // end main
 // start sign in
 body section div .div_white {
@@ -985,6 +994,10 @@ body section .my_image {
 
 // start media
 @media (max-width: 990px) and (min-width: 0px) {
+    body section .row div .div_overflow {
+        height: 100% !important;
+    }
+
     body section div .image_point {
         height: 400px;
         width: 100%;

@@ -1,6 +1,78 @@
 <template>
+    <!-- start main -->
+    <section class="container pt-4 my-5">
+        <div class="text-center">
+            <h2 class="fw-bold" :style="{ color: textColor }">Send a message to the vocational you want<br><span
+                    class="p_color_blue">Name client</span>
+            </h2>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-4">
+                <div class="d-flex justify-content-center position-relative">
+                    <img src="../../assets/imagedatabase/ai-image-enlarger-1-before-2.jpg"
+                        class="bg-white rounded-circle image_point border border-2 p-3" alt="">
+                    <button @click="button_block"
+                        class="position-absolute top-50 start-50 border border-2 text-white py-1 px-3 rounded-4 centered_button">Send
+                        A Message</button>
+                    <textarea class="position-absolute text_top rounded-3 ps-1 pt-1" placeholder="send message"></textarea>
+                </div>
+            </div>
+            <div class="col-12 col-lg-8 mt-5">
+                <div
+                    class="div_left_table d-flex align-items-center justify-content-between flex-column flex-md-row text-white">
+                    <span class="fs-4 fw-bold">vocational</span>
+                    <span class="fs-4 fw-bold">Send</span>
+                </div>
+                <div class="overflow-y-auto overflow-x-hidden mt-4 div_overflow h-50">
+                    <div class="d-flex justify-content-between align-items-center flex-column flex-md-row">
+                        <div class="d-flex gap-0 gap-md-4 align-items-center flex-column flex-md-row">
+                            <img src="../../assets/imagedatabase/ai-image-enlarger-1-before-2.jpg" alt=""
+                                class="image_table rounded-circle">
+                            <span :style="{ color: textColor }">Name vocational</span>
+                            <div class="d-flex flex-column">
+                                <input type="text">
+                            </div>
+                        </div>
+                        <a href="#">
+                            <button type="submit" :style="{ backgroundColor: buttonColor }"
+                                class="button_color text-white border-0 btn rounded-5 px-5 bg-success mt-3">Reply</button>
+                        </a>
+                    </div>
+                    <div class="div_hr_button my-2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end main -->
+</template>
+
+<script>
+export default {
+    name: "ComponentHome",
+    computed: {
+        textColor() {
+            return this.$root.textColor;
+        },
+    },
+    created() {
+        this.changePageTitle('COUNSELING CLIENT');
+    },
+    methods: {
+        changePageTitle(newTitle) {
+            document.title = newTitle;
+        },
+        button_block() {
+            const text_top = document.querySelector(".text_top");
+            text_top.style.width = "60%";
+            text_top.style.height = "60%";
+            text_top.style.zIndex = "1";
+        }
+    }
+}
+</script>
+<!-- <template>
     <div>
-        <!-- start main -->
+        start main
         <section class="mt-4 text_black" :style="{ color: textColor }">
             <div class="text-center container">
                 <div class="d-flex flex-column flex-lg-row my-5">
@@ -49,8 +121,8 @@
                 </div>
             </div>
         </section>
-        <!-- end main -->
-        <!-- start completed 1 -->
+        end main
+        start completed 1
         <section :style="{ display: divWhiteDisplay1 }">
             <div class="d-flex justify-content-center">
                 <div class="div_white shadow-lg p-3 mb-5 bg-body position-fixed">
@@ -66,11 +138,11 @@
                 </div>
             </div>
         </section>
-        <!-- end completed 1 -->
+        end completed 1
     </div>
-</template>
+</template> -->
 
-<script>
+<!-- <script>
 import "../../App.vue";
 import axios from 'axios';
 
@@ -145,4 +217,4 @@ export default {
         },
     },
 }
-</script>
+</script> -->
