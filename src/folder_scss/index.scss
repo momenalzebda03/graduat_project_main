@@ -595,6 +595,45 @@ body section div div .my_texteara {
     resize: none;
 }
 
+body section div .image_point {
+    height: 400px;
+    width: 400px;
+}
+
+body section div .centered_button {
+    transform: translate(-50%, -50%);
+    background-color: #007bff8d;
+}
+
+body section div .centered_button:hover {
+    background-color: $color_green;
+}
+
+body section .row .div_left_table {
+    height: 50px;
+    padding-left: 150px;
+    padding-right: 150px;
+    margin-left: -20%;
+    background-color: #004471;
+}
+
+body section .row div div .image_table {
+    width: 50px;
+    height: 50px;
+}
+
+body section .row div div .div_hr_button {
+    width: 110%;
+    height: 2px;
+    background-color: #ccc;
+    margin-left: -80px;
+}
+
+body section .row div .div_overflow {
+    padding-left: 10%;
+    margin-left: -10%;
+}
+
 // end main
 // start sign in
 body section div .div_white {
@@ -946,6 +985,26 @@ body section .my_image {
 
 // start media
 @media (max-width: 990px) and (min-width: 0px) {
+    body section div .image_point {
+        height: 400px;
+        width: 100%;
+    }
+
+    body section .row div div .div_hr_button,
+    body section .row .div_left_table {
+        margin-left: 0;
+    }
+
+    body section .row div div .div_hr_button {
+        width: 100%;
+    }
+
+    body section .row .div_left_table {
+        padding-left: 0;
+        padding-right: 0;
+        height: 10vh;
+    }
+
     body section .div_body .loading-container {
         max-width: 50%;
     }
