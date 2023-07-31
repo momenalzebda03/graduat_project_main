@@ -14,28 +14,28 @@
                     <button @click="button_block"
                         class="position-absolute top-50 start-50 border border-2 text-white py-1 px-3 rounded-4 centered_button">ارسل
                         رسالة</button>
-                    <textarea class="position-absolute text_top rounded-3 ps-1 pt-1" placeholder="send message"></textarea>
+                    <textarea class="position-absolute text_top rounded-3 ps-1 pt-1" placeholder="أكتب الرسالة"></textarea>
                 </div>
             </div>
             <div class="col-12 col-lg-8 mt-5">
                 <div
                     class="div_left_table d-flex align-items-center justify-content-between flex-column flex-md-row text-white">
-                    <span class="fs-4 fw-bold">Customers</span>
-                    <span class="fs-4 fw-bold">Send</span>
+                    <span class="fs-4 fw-bold">العميل</span>
+                    <span class="fs-4 fw-bold">ارسال</span>
                 </div>
                 <div class="overflow-y-auto overflow-x-hidden mt-4 div_overflow h-50">
                     <div class="d-flex justify-content-between align-items-center flex-column flex-md-row">
                         <div class="d-flex gap-0 gap-md-4 align-items-center flex-column flex-md-row">
                             <img src="../../assets/imagedatabase/ai-image-enlarger-1-before-2.jpg" alt=""
                                 class="image_table rounded-circle">
-                            <span :style="{ color: textColor }">Name Customer</span>
+                            <span :style="{ color: textColor }">أسم العميل</span>
                             <div class="d-flex flex-column">
                                 <input type="text">
                             </div>
                         </div>
                         <a href="#">
                             <button type="submit" :style="{ backgroundColor: buttonColor }"
-                                class="button_color text-white border-0 btn rounded-5 px-5 bg-success mt-3">Reply</button>
+                                class="button_color text-white border-0 btn rounded-5 px-5 bg-success mt-3">أرسل</button>
                         </a>
                     </div>
                     <div class="div_hr_button my-2"></div>

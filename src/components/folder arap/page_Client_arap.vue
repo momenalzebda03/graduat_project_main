@@ -5,25 +5,25 @@
             <div class="container rounded-3 position-relative overflow-hidden" id="container">
                 <div class="form-container sign-up-container position-absolute">
                     <form
-                        action="http://localhost/graduatproject-main/src/components/folder%20english/Insert%20Client%20English.php"
+                        action="http://localhost/graduatproject-main/src/components/folder%20arap/Insert%20Client%20arap.php"
                         method="post" enctype="multipart/form-data"
                         class="my_form d-flex justify-content-center height_container height_up align-items-center flex-column text-center">
                         <h1 class="fw-bold">اشتراك</h1>
                         <span>يرجى تعبئة البيانات المطلوبة بصفتك صاحب المهنة</span>
                         <input type="text" required name="Name_Client" placeholder="اسم العميل"
-                            class="my_input border border-0 w-100 my-2 mt-3" />
+                            class="my_input border border-0 w-100 my-2 text-end mt-3" />
                         <input type="text" required name="Profession_Client" placeholder="المهنة المطلوبة"
-                            class="my_input border border-0 w-100 my-2" />
+                            class="my_input border border-0 w-100 my-2 text-end" />
                         <input type="text" required name="Problem_Client" placeholder="مشكلة موجودة"
-                            class="my_input border border-0 w-100 my-2" />
+                            class="my_input border border-0 w-100 my-2 text-end" />
                         <input type="password" required name="Password_Client" placeholder="كلمة المرور"
-                            class="my_input border border-0 w-100 my-2" v-model="password" />
+                            class="my_input border border-0 w-100 my-2 text-end" v-model="password" />
                         <input type="password" required placeholder="تاكيد كلمة المرور" v-model="confirmPassword"
-                            class="my_input border border-0 w-100 my-2" />
+                            class="my_input border border-0 w-100 my-2 text-end" />
                         <input type="file" required name="Image_Client"
-                            class="my_input input_file border border-0 w-100 my-2">
+                            class="my_input input_file border border-0 w-100 my-2 text-end">
                         <button :disabled="isFormDisabled" @click="activateDatabase"
-                            class="my_button border border-0 button_color text-white fw-bold" type="submit">Sign up
+                            class="my_button border border-0 button_color text-white fw-bold" type="submit">أنشاء حساب
                         </button>
                         <p v-if="passwordMismatch && password !== '' && confirmPassword !== ''" class="text-danger">
                             كلمات المرور غير متطابقة ويجب أن تحتوي على 5 أحرف</p>
@@ -37,11 +37,11 @@
                         <h1>تسجيل الدخول</h1>
                         <span class="text-secondary">أو استخدام حسابك</span>
                         <input type="text" placeholder="اسم العميل" required name="Name_Signin"
-                            class="my_input border border-0 w-100 my-2" />
-                        <input type="password" placeholder="Password" required name="كلمة المرور"
-                            class="my_input border border-0 w-100 my-2" />
+                            class="my_input border border-0 w-100 my-2 text-end" />
+                        <input type="password" placeholder="كلمة المرور" required name="Password_Signin"
+                            class="my_input border border-0 w-100 my-2 text-end" />
                         <input type="submit" class="my_button mt-2 border border-0 button_color text-white fw-bold"
-                            value="Sign In">
+                            value="تسجيل الدخول">
                         <p v-if="invalidCredentials" class="mt-3 text-danger fw-bold">يرجى التحقق من اسمك وكلمة المرور
                         </p>
                     </form>
@@ -106,14 +106,6 @@ export default {
                 .catch(() => {
                     this.invalidCredentials = true;
                 });
-        },
-        signIn() {
-            const container = document.getElementById("container");
-            container.classList.remove("right-panel-active");
-        },
-        signUp() {
-            const container = document.getElementById("container");
-            container.classList.add("right-panel-active");
         },
         changePageTitle(newTitle) {
             document.title = newTitle;

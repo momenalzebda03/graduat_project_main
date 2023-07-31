@@ -13,36 +13,36 @@
                         <div class="d-flex gap-1 flex-column flex-md-row">
                             <div>
                                 <input type="text" placeholder="الأسم" name="Name_vocational" required
-                                    class="my_input border border-0 w-100 my-2 mt-3" />
+                                    class="my_input border border-0 w-100 my-2 mt-3 text-end" />
                                 <input type="text" placeholder="المسمى الوظيفي" name="Job_vocational" required
-                                    class="my_input border border-0 w-100 my-2" />
+                                    class="my_input border border-0 w-100 my-2 text-end" />
                                 <input type="text" placeholder="تخصص" name="Specialization_vocational" required
-                                    class="my_input border border-0 w-100 my-2" />
+                                    class="my_input border border-0 w-100 my-2 text-end" />
                                 <input type="text" placeholder="خبرة" required name="Experience_vocational"
-                                    class="my_input border border-0 w-100 my-2" />
+                                    class="my_input border border-0 w-100 my-2 text-end" />
                                 <input type="text" placeholder="خبرة 1" name="Experience_vocational1" required
-                                    class="my_input border border-0 w-100 my-2" />
+                                    class="my_input border border-0 w-100 my-2 text-end" />
                                 <input type="text" placeholder="خبرة 2" name="Experience_vocational2" required
-                                    class="my_input border border-0 w-100 my-2" />
+                                    class="my_input border border-0 w-100 my-2 text-end" />
                                 <input type="text" placeholder="خبرة 3" name="Experience_vocational3" required
-                                    class="my_input my_input_1 border border-0 w-100 my-2" />
+                                    class="my_input my_input_1 border border-0 w-100 my-2 text-end" />
                             </div>
                             <div>
                                 <input type="text" placeholder="مهارة السلسلة" name="String_Skill_vocational" required
-                                    class="my_input border border-0 w-100 my-2 mt-3" />
+                                    class="my_input border border-0 w-100 my-2 text-end mt-3" />
                                 <input type="text" placeholder="مهارة" name="Skill_vocational" required
-                                    class="my_input border border-0 w-100 my-2" />
+                                    class="my_input border border-0 w-100 my-2 text-end" />
                                 <input type="text" placeholder="مهارة 1" name="Skill_vocational1" required
-                                    class="my_input border border-0 w-100 my-2" />
+                                    class="my_input border border-0 w-100 my-2 text-end" />
                                 <input type="text" placeholder="مهارة 2" name="Skill_vocational2" required
-                                    class="my_input border border-0 w-100 my-2" />
+                                    class="my_input border border-0 w-100 my-2 text-end" />
                                 <input type="password" placeholder="كلمة المرور" required
-                                    class="my_input border border-0 w-100 my-2" name="Password_vocational"
+                                    class="my_input border border-0 w-100 my-2 text-end" name="Password_vocational"
                                     v-model="password" />
                                 <input type="password" placeholder="تاكيد كلمة المرور" required
-                                    class="my_input border border-0 w-100 my-2" v-model="confirmPassword" />
+                                    class="my_input border border-0 w-100 my-2 text-end" v-model="confirmPassword" />
                                 <input type="file" name="Image_vocational" required @change="handleImageUpload"
-                                    class="my_input border border-0 w-100 my-2 input_file">
+                                    class="my_input border border-0 w-100 my-2 text-end input_file">
                             </div>
                         </div>
                         <p v-if="passwordMismatch && password !== '' && confirmPassword !== ''" class="text-danger">
