@@ -79,7 +79,7 @@ export default {
         },
     },
     created() {
-        this.changePageTitle('COUNSELING VOCATIONAL');
+        this.changePageTitle('COUNSELING - VOCATIONAL');
     },
     data() {
         return {

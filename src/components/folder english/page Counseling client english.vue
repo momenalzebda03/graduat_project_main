@@ -91,7 +91,7 @@ export default {
         };
     },
     created() {
-        this.changePageTitle('COUNSELING CLIENT');
+        this.changePageTitle('COUNSELING - CLIENT');
     },
     mounted() {
         this.message_vocaional();
