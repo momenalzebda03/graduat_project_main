@@ -622,13 +622,6 @@ body section .row div div .image_table {
     height: 50px;
 }
 
-body section .row div div .div_hr_button {
-    width: 110%;
-    height: 2px;
-    background-color: #ccc;
-    margin-left: -80px;
-}
-
 body section .row div .div_overflow {
     padding-left: 10%;
     margin-left: -10%;
@@ -1003,13 +996,8 @@ body section .my_image {
         width: 100%;
     }
 
-    body section .row div div .div_hr_button,
     body section .row .div_left_table {
         margin-left: 0;
-    }
-
-    body section .row div div .div_hr_button {
-        width: 100%;
     }
 
     body section .row .div_left_table {
