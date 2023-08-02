@@ -24,23 +24,27 @@
                     <span class="fs-4 fw-bold">المهني</span>
                     <span class="fs-4 fw-bold">ارسال</span>
                 </div>
-                <div class="overflow-y-auto overflow-x-hidden mt-4 div_overflow h-50">
-                    <div class="d-flex justify-content-between align-items-center flex-column flex-md-row py-3"
-                        v-for="my_api in api_user" :key="my_api.Customer_Id">
+                <div class="overflow-y-auto overflow-x-hidden div_overflow h-50">
+                    <div v-for="my_api in api_user" :key="my_api.Customer_Id">
                         <p class="d-none">{{ message_vocaional(my_api.id) }}</p>
-                        <div class="d-flex gap-0 gap-md-4 align-items-center flex-column flex-md-row">
-                            <img src="../../assets/imagedatabase/ai-image-enlarger-1-before-2.jpg" alt=""
-                                class="image_table rounded-circle">
-                            <span :style="{ color: textColor }">{{ my_api.Name_Vocational }}</span>
-                            <div v-for="select_message in getMessagesByApiUserId(my_api.id)" :key="select_message.id"
-                                class="d-flex flex-column">
-                                <input type="text" :value="select_message.message" readonly>
+                        <div
+                            class="d-flex justify-content-between align-items-center flex-column flex-md-row py-3 div_message_hover">
+                            <div class="d-flex gap-0 gap-md-4 align-items-center flex-column flex-md-row">
+                                <img :src="getImagePath(my_api.Vocational_Image)" alt="" class="image_table rounded-circle">
+                                <span :style="{ color: textColor }">{{ my_api.Name_Vocational }}</span>
+                                <div class="border border-2 text-center p-2">
+                                    <div v-for="select_message in getMessagesByApiUserId(my_api.id)"
+                                        :key="select_message.id">
+                                        <span>{{ select_message.message }}</span>
+                                    </div>
+                                </div>
                             </div>
+                            <a :href="getLink(my_api.id)">
+                                <button type="submit" :style="{ backgroundColor: buttonColor }"
+                                    class="button_color text-white border-0 btn rounded-5 px-5 bg-success mt-3">ارسال</button>
+                            </a>
                         </div>
-                        <a :href="getLink(my_api.id)">
-                            <button type="submit" :style="{ backgroundColor: buttonColor }"
-                                class="button_color text-white border-0 btn rounded-5 px-5 bg-success mt-3">ارسال</button>
-                        </a>
+                        <div class="div_hr_button my-2"></div>
                     </div>
                 </div>
             </div>

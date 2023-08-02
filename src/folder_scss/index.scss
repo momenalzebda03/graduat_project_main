@@ -636,6 +636,20 @@ body section .row div div .text_top {
     z-index: -1;
 }
 
+body section .row div div .div_hr_button {
+    width: 110%;
+    height: 2px;
+    background-color: #ccc;
+    margin-left: -80px;
+}
+
+body section .row div .div_overflow .div_message_hover:hover {
+    background-color: #eee;
+    padding-left: 10%;
+    margin-left: -10%;
+    cursor: pointer;
+}
+
 // end main
 // start sign in
 body section div .div_white {
@@ -996,8 +1010,13 @@ body section .my_image {
         width: 100%;
     }
 
+    body section .row div div .div_hr_button,
     body section .row .div_left_table {
         margin-left: 0;
+    }
+
+    body section .row div div .div_hr_button {
+        width: 100%;
     }
 
     body section .row .div_left_table {
